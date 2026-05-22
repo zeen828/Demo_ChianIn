@@ -13,18 +13,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('name')->comment('名稱');
+            $table->string('email')->unique()->comment('帳號');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->comment('密碼');
+            $table->boolean('status')->default('0')->comment('狀態');
+            $table->boolean('is_admin')->default('0')->comment('管理員');
+            $table->boolean('is_temple')->default('0')->comment('廟宇人員');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->comment('使用者');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
+
+            $table->comment('忘記密碼token');
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -34,6 +41,8 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+
+            $table->comment('登入Session');
         });
     }
 
