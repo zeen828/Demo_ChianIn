@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
+use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -17,6 +18,12 @@ class UserInfolist
                 TextEntry::make('email_verified_at')
                     ->dateTime()
                     ->placeholder('-'),
+                IconEntry::make('status')
+                    ->boolean(),
+                IconEntry::make('is_admin')
+                    ->boolean(),
+                IconEntry::make('is_temple')
+                    ->boolean(),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),
