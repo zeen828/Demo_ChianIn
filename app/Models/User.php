@@ -54,4 +54,5 @@ class User extends Authenticatable
             'is_temple' => 'boolean',
         ];
     }
+
 }
