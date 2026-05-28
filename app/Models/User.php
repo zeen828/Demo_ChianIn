@@ -15,6 +15,8 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
     use HasRoles;
 
+    // protected $table = 'users';// Laravel 慣例會自己對上，不需要特別說
+
     /**
      * The attributes that are mass assignable.
      *
