@@ -18,12 +18,13 @@ class Country extends Model
         'name',
         'code',
         'slug',
-        'is_active',
+        'status',
     ];
 
     protected function casts(): array
     {
         return [
+            'status' => 'boolean',
         ];
     }
 }

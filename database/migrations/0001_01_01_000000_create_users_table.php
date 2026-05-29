@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('email')->unique()->comment('帳號');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->comment('密碼');
-            $table->boolean('status')->default('0')->comment('狀態');
-            $table->boolean('is_admin')->default('0')->comment('管理員');
-            $table->boolean('is_temple')->default('0')->comment('廟宇人員');
+            $table->boolean('status')->default(false)->comment('狀態');
+            $table->boolean('is_admin')->default(false)->comment('管理員');
+            $table->boolean('is_temple')->default(false)->comment('廟宇人員');
             $table->rememberToken();
             $table->timestamps();
 

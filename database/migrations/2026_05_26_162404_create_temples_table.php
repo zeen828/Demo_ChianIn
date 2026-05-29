@@ -26,9 +26,9 @@ return new class extends Migration
             $table->longText('description')->nullable()->comment('廟宇介紹');
             $table->string('main_deity')->nullable()->comment('主祀神明');
             $table->year('founded_year')->nullable()->comment('建立年份');
-            $table->boolean('is_active')->default(true)->comment('啟用');
             $table->string('seo_title')->nullable()->comment('SEO title');
             $table->text('seo_description')->nullable()->comment('SEO description');
+            $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
             $table->comment('廟宇資料表');

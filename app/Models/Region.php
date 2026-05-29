@@ -17,12 +17,14 @@ class Region extends Model
         'name',
         'slug',
         'sort',
-        'is_active',
+        'status',
     ];
 
     protected function casts(): array
     {
         return [
+            'sort' => 'integer',
+            'status' => 'boolean',
         ];
     }
 }

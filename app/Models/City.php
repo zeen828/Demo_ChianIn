@@ -19,12 +19,15 @@ class City extends Model
         'slug',
         'latitude',
         'longitude',
-        'is_active',
+        'status',
     ];
 
     protected function casts(): array
     {
         return [
+            'latitude' => 'decimal:7',
+            'longitude' => 'decimal:7',
+            'status' => 'boolean',
         ];
     }
 }

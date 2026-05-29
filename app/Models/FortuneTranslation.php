@@ -19,11 +19,13 @@ class FortuneTranslation extends Model
         'title',
         'poem',
         'summary',
+        'status',
     ];
 
     protected function casts(): array
     {
         return [
+            'status' => 'boolean',
         ];
     }
 }

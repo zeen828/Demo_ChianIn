@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('total_fortunes')->default(0)->comment('籤總數');
             $table->longText('description')->nullable()->comment('籤流派介紹');
             $table->foreignId('country_id')->nullable()->constrained()->nullOnDelete()->comment('發源國家');
-            $table->boolean('is_active')->default(true)->comment('啟用');
+            $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
             $table->comment('籤詩流派資料表');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->integer('number')->comment('第幾籤');
             $table->string('fortune_level')->nullable()->comment('吉凶分類');// 大吉 / 吉 / 中吉 / 凶
             $table->string('code')->nullable()->comment('籤詩代碼');// 方便API與排序
-            $table->boolean('is_active')->default(true)->comment('啟用');
+            $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
             $table->comment('籤詩主資料表');
@@ -43,6 +43,7 @@ return new class extends Migration
             $table->string('title')->nullable()->comment('籤詩標題');
             $table->longText('poem')->comment('籤詩內容');
             $table->text('summary')->nullable()->comment('解釋摘要');
+            $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
             $table->comment('籤詩多語系內容表');
@@ -62,6 +63,7 @@ return new class extends Migration
             $table->longText('relationship')->nullable()->comment('人際');
             $table->longText('lawsuit')->nullable()->comment('訴訟');
             $table->longText('lost_item')->nullable()->comment('失物');
+            $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
             $table->comment('解籤多語系內容表');

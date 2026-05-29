@@ -26,11 +26,13 @@ class InterpretationTranslation extends Model
         'relationship',
         'lawsuit',
         'lost_item',
+        'status',
     ];
 
     protected function casts(): array
     {
         return [
+            'status' => 'boolean',
         ];
     }
 }

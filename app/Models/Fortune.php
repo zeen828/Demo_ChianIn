@@ -18,12 +18,14 @@ class Fortune extends Model
         'number',
         'fortune_level',
         'code',
-        'is_active',
+        'status',
     ];
 
     protected function casts(): array
     {
         return [
+            'number' => 'integer',
+            'status' => 'boolean',
         ];
     }
 }

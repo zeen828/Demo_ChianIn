@@ -27,9 +27,9 @@ class Temple extends Model
         'description',
         'main_deity',
         'founded_year',
-        'is_active',
         'seo_title',
         'seo_description',
+        'status',
     ];
 
     protected function casts(): array
@@ -39,7 +39,7 @@ class Temple extends Model
             'latitude' => 'decimal:7',
             'longitude' => 'decimal:7',
             // 'founded_year',
-            'is_active' => 'boolean',
+            'status' => 'boolean',
         ];
     }
 }

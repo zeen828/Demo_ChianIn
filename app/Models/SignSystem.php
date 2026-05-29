@@ -19,13 +19,14 @@ class SignSystem extends Model
         'total_fortunes',
         'description',
         'country_id',
-        'is_active',
+        'status',
     ];
 
     protected function casts(): array
     {
         return [
-            'is_active' => 'boolean',
+            'total_fortunes' => 'integer',
+            'status' => 'boolean',
         ];
     }
 }

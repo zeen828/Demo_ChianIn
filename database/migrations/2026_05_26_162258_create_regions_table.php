@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->comment('名稱');
             $table->string('slug')->unique()->comment('代碼');
             $table->integer('sort')->default(0)->comment('排序');
-            $table->boolean('is_active')->default(true)->comment('啟用');
+            $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
             $table->comment('世界區域表');
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('name')->comment('名稱');
             $table->string('code', 10)->nullable()->comment('代碼');
             $table->string('slug')->unique()->comment('URL slug');
-            $table->boolean('is_active')->default(true)->comment('啟用');
+            $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
             $table->comment('國家資料表');
@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('slug')->comment('URL slug');
             $table->decimal('latitude', 10, 7)->nullable()->comment('緯度');
             $table->decimal('longitude', 10, 7)->nullable()->comment('經度');
-            $table->boolean('is_active')->default(true)->comment('啟用');
+            $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
             $table->comment('城市資料表');
