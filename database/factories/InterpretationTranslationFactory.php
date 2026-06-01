@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+// Model
 use App\Models\InterpretationTranslation;
+use App\Models\Fortune;
+//
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +21,19 @@ class InterpretationTranslationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'fortune_id' => Fortune::factory(),
+            'locale' => fake()->randomElement(['zh_TW', 'en', 'ja']),
+            'general_interpretation' => fake()->paragraph(),
+            'love' => fake()->sentence(),
+            'career' => fake()->sentence(),
+            'wealth' => fake()->sentence(),
+            'health' => fake()->sentence(),
+            'exam' => fake()->sentence(),
+            'travel' => fake()->sentence(),
+            'relationship' => fake()->sentence(),
+            'lawsuit' => fake()->sentence(),
+            'lost_item' => fake()->sentence(),
+            'status' => fake()->boolean(),
         ];
     }
 }

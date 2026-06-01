@@ -16,6 +16,7 @@ class City extends Model
         // 'id',
         'country_id',
         'name',
+        'name_local',
         'slug',
         'latitude',
         'longitude',

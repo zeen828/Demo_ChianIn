@@ -15,6 +15,7 @@ class Region extends Model
     protected $fillable = [
         // 'id',
         'name',
+        'name_local',
         'slug',
         'sort',
         'status',

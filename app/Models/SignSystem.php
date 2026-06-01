@@ -18,7 +18,6 @@ class SignSystem extends Model
         'slug',
         'total_fortunes',
         'description',
-        'country_id',
         'status',
     ];
 

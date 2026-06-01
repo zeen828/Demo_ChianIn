@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('sign_systems', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('名稱');
-            $table->string('slug')->unique()->comment('URL slug');
+            $table->string('slug')->comment('URL slug');
             $table->integer('total_fortunes')->default(0)->comment('籤總數');
             $table->longText('description')->nullable()->comment('籤流派介紹');
-            $table->foreignId('country_id')->nullable()->constrained()->nullOnDelete()->comment('發源國家');
             $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 

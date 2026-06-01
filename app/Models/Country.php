@@ -16,6 +16,7 @@ class Country extends Model
         // 'id',
         'region_id',
         'name',
+        'name_local',
         'code',
         'slug',
         'status',

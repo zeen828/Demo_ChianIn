@@ -20,6 +20,15 @@ class DatabaseSeeder extends Seeder
             RolesAndPermissionsSeeder::class,
             // 管理者
             AdminUserSeeder::class,
+
+            RegionSeeder::class,
+            CountrySeeder::class,
+            CitySeeder::class,
+
+            SignSystemSeeder::class,
+            FortuneSeeder::class,
+            FortuneTranslationSeeder::class,
+            InterpretationTranslationSeeder::class,
         ]);
 
         User::factory(20)->user()->create();
