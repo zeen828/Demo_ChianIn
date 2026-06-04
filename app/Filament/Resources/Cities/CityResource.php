@@ -1,0 +1,85 @@
+<?php
+
+namespace App\Filament\Resources\Cities;
+
+use App\Filament\Resources\Cities\Pages\CreateCity;
+use App\Filament\Resources\Cities\Pages\EditCity;
+use App\Filament\Resources\Cities\Pages\ListCities;
+use App\Filament\Resources\Cities\Pages\ViewCity;
+use App\Filament\Resources\Cities\Schemas\CityForm;
+use App\Filament\Resources\Cities\Schemas\CityInfolist;
+use App\Filament\Resources\Cities\Tables\CitiesTable;
+use App\Models\City;
+use BackedEnum;
+use UnitEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class CityResource extends Resource
+{
+    // protected static ?string $navigationParentItem = 'Products';
+    // protected static string | UnitEnum | null $navigationGroup = '區域';// 菜單分類
+    public static function getNavigationGroup(): ?string
+    {
+        return __('filament/navigation.area');
+    }
+
+    // protected static ?string $navigationLabel = '城市';// 菜單標題
+    public static function getNavigationLabel(): string
+    {
+        return __('filament/navigation.cities');
+    }
+    protected static ?int $navigationSort = 3;// 排序
+    // protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-user-group';// Icon標籤圖示
+
+    // protected static ?string $modelLabel = '主標題-2';// 標題
+    public static function getModelLabel(): string
+    {
+        return __('filament/navigation.cities');
+    }
+    // protected static ?string $pluralModelLabel = '主標題們-2';// 標題(複數)
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament/navigation.cities');
+    }
+
+    protected static ?string $model = City::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static ?string $recordTitleAttribute = 'City';
+
+    public static function form(Schema $schema): Schema
+    {
+        return CityForm::configure($schema);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return CityInfolist::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return CitiesTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListCities::route('/'),
+            'create' => CreateCity::route('/create'),
+            'view' => ViewCity::route('/{record}'),
+            'edit' => EditCity::route('/{record}/edit'),
+        ];
+    }
+}

@@ -56,6 +56,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentShieldPlugin::make(),
+                // filament-shield 套件角色重新定義菜單名稱
+                // FilamentShieldPlugin::make()->navigationGroup('系統管理')->navigationLabel('角色權限')->navigationSort(99),
+                FilamentShieldPlugin::make()->navigationGroup(__('filament/navigation.system'))->navigationLabel(__('filament/navigation.roles'))->navigationSort(99),
             ])
             ->authMiddleware([
                 Authenticate::class,

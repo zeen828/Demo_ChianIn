@@ -20,13 +20,11 @@ class RegionFactory extends Factory
      */
     public function definition(): array
     {
-        $name_local = fake()->name();
-
         return [
             'name' => fake('zh_TW')->name(),
-            'name_local' => $name_local,
-            'slug' => Str::slug($name_local),
-            'sort' => fake()->numberBetween(1, 100),
+            'name_local' => fake()->name(),
+            'slug' => fake()->name(),
+            'sort' => fake()->numberBetween(1, 500),
             'status' => fake()->boolean(),
         ];
     }

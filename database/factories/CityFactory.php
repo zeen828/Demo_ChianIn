@@ -21,13 +21,12 @@ class CityFactory extends Factory
      */
     public function definition(): array
     {
-        $name_local = fake()->city();
-
         return [
-            'country_id' => Country::factory(),
+            // 'country_id' => Country::factory(),// 新建對應表
+            'country_id' => Country::query()->inRandomOrder()->value('id'),// 使用現有的ID
             'name' => fake('zh_TW')->city(),
-            'name_local' => $name_local,
-            'slug' => Str::slug($name_local),
+            'name_local' => fake()->city(),
+            'slug' => fake()->city(),
             'latitude' => fake()->latitude(),
             'longitude' => fake()->longitude(),
             'status' => fake()->boolean(),

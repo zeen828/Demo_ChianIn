@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Filament\Resources\InterpretationTranslations\Pages;
+
+use App\Filament\Resources\InterpretationTranslations\InterpretationTranslationResource;
+use Filament\Actions\CreateAction;
+use Filament\Resources\Pages\ListRecords;
+
+class ListInterpretationTranslations extends ListRecords
+{
+    protected static string $resource = InterpretationTranslationResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make(),
+        ];
+    }
+}

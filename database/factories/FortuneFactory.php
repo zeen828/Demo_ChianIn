@@ -21,7 +21,8 @@ class FortuneFactory extends Factory
     public function definition(): array
     {
         return [
-            'sign_system_id' => SignSystem::factory(),
+            // 'sign_system_id' => SignSystem::factory(),// 新建對應表
+            'sign_system_id' => SignSystem::query()->inRandomOrder()->value('id'),// 使用現有的ID
             'number' => fake()->numberBetween(1, 100),
             'fortune_level' => fake()->randomElement([
                 '大吉',

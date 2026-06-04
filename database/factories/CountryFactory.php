@@ -21,14 +21,13 @@ class CountryFactory extends Factory
      */
     public function definition(): array
     {
-        $name_local = fake()->country();
-
         return [
-            'region_id' => Region::factory(),
+            // 'region_id' => Region::factory(),// 新建對應表
+            'region_id' => Region::query()->inRandomOrder()->value('id'),// 使用現有的ID
             'name' => fake('zh_TW')->country(),
-            'name_local' => $name_local,
+            'name_local' => fake()->country(),
             'code' => strtoupper(fake()->lexify('??')),
-            'slug' => Str::slug($name_local),
+            'slug' => fake()->country(),
             'status' => fake()->boolean(),
         ];
     }
