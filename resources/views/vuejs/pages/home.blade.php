@@ -3,39 +3,128 @@
 @section('title', '首頁')
 
 @section('content')
-            <div id="carouselExampleIndicators" class="carousel slide ratio ratio-4x3" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/images/demo/puu.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/demo/puu.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/demo/puu.jpg" class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+<div class="container py-4">
 
-            @include('vuejs.partials.navbar')
+    <!-- Logo -->
+    <div class="text-center mb-4">
+        <h1 class="fw-bold">
+            線上求籤
+        </h1>
 
-            <h1>@{{ message }}</h1>
+        <p class="text-muted">
+            誠心敬意，神明指引
+        </p>
+    </div>
 
-            <button @click="count++">
-                點擊次數：@{{ count }}
+    <!-- 神像 -->
+    <div class="text-center mb-4">
+
+        <img
+            src="https://placehold.co/300x300"
+            class="img-fluid rounded-circle shadow"
+            alt="神像">
+
+    </div>
+
+    <!-- 籤種 -->
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <label class="form-label">
+                籤詩系統
+            </label>
+
+            <select class="form-select">
+
+                <option>
+                    觀音一百籤
+                </option>
+
+                <option>
+                    雷雨師一百籤
+                </option>
+
+                <option>
+                    六十甲子籤
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <!-- 抽籤 -->
+    <div class="d-grid mb-4">
+
+        <button class="btn btn-danger btn-lg">
+
+            <i class="bi bi-stars"></i>
+
+            開始抽籤
+
+        </button>
+
+    </div>
+
+    <!-- 結果 -->
+    <div class="card shadow">
+
+        <div class="card-header text-center">
+
+            <h3 class="mb-0">
+                第二十八籤
+            </h3>
+
+            <span class="badge bg-success">
+                上上籤
+            </span>
+
+        </div>
+
+        <div class="card-body">
+
+            <h5 class="text-center mb-4">
+                東邊月上正嬋娟
+            </h5>
+
+            <p class="text-center text-muted">
+                功名得意與君顯，
+                前程萬里福綿綿。
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- 按鈕 -->
+    <div class="row mt-4">
+
+        <div class="col-6">
+
+            <button
+                class="btn btn-outline-primary w-100">
+
+                查看解籤
+
             </button>
+
+        </div>
+
+        <div class="col-6">
+
+            <button
+                class="btn btn-outline-secondary w-100">
+
+                重新抽籤
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 @endsection
