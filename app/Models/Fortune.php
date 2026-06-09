@@ -16,8 +16,12 @@ class Fortune extends Model
         // 'id',
         'sign_system_id',
         'number',
+        'title',
+        'content',
         'fortune_level',
         'code',
+        'image',
+        'memo',
         'status',
     ];
 

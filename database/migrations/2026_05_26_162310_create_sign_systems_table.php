@@ -27,8 +27,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sign_system_id')->comment('流派ID');
             $table->integer('number')->comment('第幾籤');
+            $table->string('title')->nullable()->comment('籤詩標題');
+            $table->text('content')->nullable()->comment('籤詩內容');
             $table->string('fortune_level')->nullable()->comment('吉凶分類');// 大吉 / 吉 / 中吉 / 凶
             $table->string('code')->nullable()->comment('籤詩代碼');// 方便API與排序
+            $table->string('image')->nullable()->comment('籤詩圖片');// 方便API與排序
+            $table->text('memo')->nullable()->comment('備忘錄');
             $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 

@@ -16,7 +16,16 @@ class CountrySeeder extends Seeder
     {
         // Country::factory(50)->create();
 
-        $countries = [
+        Country::upsert(
+            $this->datas(),
+            ['id']
+        );
+    }
+
+    private function datas(): array
+    {
+        $now = now();
+        return [
             [
                 'id' => 1,
                 'region_id' => 15,
@@ -24,6 +33,9 @@ class CountrySeeder extends Seeder
                 'name_local' => '台灣',
                 'code' => 'TW',
                 'slug' => 'taiwan',
+                'status' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 2,
@@ -32,6 +44,9 @@ class CountrySeeder extends Seeder
                 'name_local' => '日本',
                 'code' => 'JP',
                 'slug' => 'japan',
+                'status' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 3,
@@ -40,6 +55,9 @@ class CountrySeeder extends Seeder
                 'name_local' => '韓國',
                 'code' => 'KR',
                 'slug' => 'south-korea',
+                'status' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 4,
@@ -48,6 +66,9 @@ class CountrySeeder extends Seeder
                 'name_local' => '北韓',
                 'code' => 'KP',
                 'slug' => 'north-korea',
+                'status' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 5,
@@ -56,6 +77,9 @@ class CountrySeeder extends Seeder
                 'name_local' => '中國',
                 'code' => 'CN',
                 'slug' => 'china',
+                'status' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 6,
@@ -64,6 +88,9 @@ class CountrySeeder extends Seeder
                 'name_local' => '香港',
                 'code' => 'HK',
                 'slug' => 'hong-kong',
+                'status' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 7,
@@ -72,6 +99,9 @@ class CountrySeeder extends Seeder
                 'name_local' => '澳門',
                 'code' => 'MO',
                 'slug' => 'macau',
+                'status' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 8,
@@ -80,19 +110,10 @@ class CountrySeeder extends Seeder
                 'name_local' => '蒙古',
                 'code' => 'MN',
                 'slug' => 'mongolia',
+                'status' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
         ];
-
-        foreach ($countries as $key=>$countrion) {
-            Country::factory()->create([
-                'id' => $countrion['id'],
-                'region_id' => $countrion['region_id'],
-                'name' => $countrion['name'],
-                'name_local' => $countrion['name_local'],
-                'code' => $countrion['code'],
-                'slug' => $countrion['slug'],
-                'status' => true,
-            ]);
-        }
     }
 }
