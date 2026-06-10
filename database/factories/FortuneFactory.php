@@ -24,6 +24,8 @@ class FortuneFactory extends Factory
             // 'sign_system_id' => SignSystem::factory(),// 新建對應表
             'sign_system_id' => SignSystem::query()->inRandomOrder()->value('id'),// 使用現有的ID
             'number' => fake()->numberBetween(1, 100),
+            'title' => fake('zh_TW')->title(),
+            'content' => fake('zh_TW')->paragraphs(3, true),
             'fortune_level' => fake()->randomElement([
                 '大吉',
                 '吉',
@@ -33,7 +35,9 @@ class FortuneFactory extends Factory
                 '末吉',
             ]),
             'code' => strtoupper(fake()->bothify('F###')),
-            'status' => fake()->boolean(),
+            'image' => null,
+            'memo' => '',
+            'status' => fake()->boolean(80),
         ];
     }
 }

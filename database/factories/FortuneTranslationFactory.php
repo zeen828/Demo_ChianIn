@@ -27,7 +27,7 @@ class FortuneTranslationFactory extends Factory
             'title' => fake()->sentence(3),
             'poem' => fake()->paragraph(4),
             'summary' => fake()->sentence(10),
-            'status' => fake()->boolean(),
+            'status' => fake()->boolean(80),
         ];
     }
 }

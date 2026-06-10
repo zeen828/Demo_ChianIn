@@ -27,8 +27,8 @@ class CountryFactory extends Factory
             'name' => fake('zh_TW')->country(),
             'name_en' => fake()->country(),
             'code' => strtoupper(fake()->lexify('??')),
-            'slug' => fake()->country(),
-            'status' => fake()->boolean(),
+            'slug' => fake()->unique()->slug(),
+            'status' => fake()->boolean(80),
         ];
     }
 }

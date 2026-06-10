@@ -26,10 +26,10 @@ class CityFactory extends Factory
             'country_id' => Country::query()->inRandomOrder()->value('id'),// 使用現有的ID
             'name' => fake('zh_TW')->city(),
             'name_en' => fake()->city(),
-            'slug' => fake()->city(),
+            'slug' => fake()->unique()->slug(),
             'latitude' => fake()->latitude(),
             'longitude' => fake()->longitude(),
-            'status' => fake()->boolean(),
+            'status' => fake()->boolean(80),
         ];
     }
 }

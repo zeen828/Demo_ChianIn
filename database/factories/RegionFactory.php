@@ -23,9 +23,9 @@ class RegionFactory extends Factory
         return [
             'name' => fake('zh_TW')->name(),
             'name_en' => fake()->name(),
-            'slug' => fake()->name(),
+            'slug' => fake()->unique()->slug(),
             'sort' => fake()->numberBetween(1, 500),
-            'status' => fake()->boolean(),
+            'status' => fake()->boolean(80),
         ];
     }
 }

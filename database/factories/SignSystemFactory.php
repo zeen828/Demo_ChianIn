@@ -22,10 +22,10 @@ class SignSystemFactory extends Factory
     {
         return [
             'name' => fake('zh_TW')->name(),
-            'slug' => fake()->name(),
+            'slug' => fake()->unique()->slug(),
             'total_fortunes' => fake()->numberBetween(20, 100),
             'description' => fake('zh_TW')->paragraph(),
-            'status' => fake()->boolean(),
+            'status' => fake()->boolean(80),
         ];
     }
 }

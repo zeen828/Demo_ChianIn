@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
             FortuneSeeder::class,
             FortuneTranslationSeeder::class,
             InterpretationTranslationSeeder::class,
+
+            TempleSeeder::class,
         ]);
 
         User::factory(20)->user()->create();

@@ -34,7 +34,7 @@ class InterpretationTranslationFactory extends Factory
             'relationship' => fake()->sentence(),
             'lawsuit' => fake()->sentence(),
             'lost_item' => fake()->sentence(),
-            'status' => fake()->boolean(),
+            'status' => fake()->boolean(80),
         ];
     }
 }

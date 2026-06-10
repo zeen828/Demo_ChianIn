@@ -14,7 +14,7 @@ class FortuneSeeder extends Seeder
      */
     public function run(): void
     {
-        // Fortune::factory(50)->create();
+        // Fortune::factory(150)->create();
 
         Fortune::upsert(
             $this->datas(),

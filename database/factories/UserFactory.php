@@ -32,9 +32,9 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
-            'status' => fake()->boolean(),
-            'is_admin' => fake()->boolean(),
-            'is_temple' => fake()->boolean(),
+            'status' => fake()->boolean(80),
+            'is_admin' => fake()->boolean(80),
+            'is_temple' => fake()->boolean(80),
             'remember_token' => Str::random(10),
         ];
     }
