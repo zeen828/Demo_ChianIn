@@ -13,7 +13,7 @@ class RegionInfolist
         return $schema
             ->components([
                 TextEntry::make('name'),
-                TextEntry::make('name_local'),
+                TextEntry::make('name_en'),
                 TextEntry::make('slug'),
                 TextEntry::make('sort')
                     ->numeric(),

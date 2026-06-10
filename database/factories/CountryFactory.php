@@ -25,7 +25,7 @@ class CountryFactory extends Factory
             // 'region_id' => Region::factory(),// 新建對應表
             'region_id' => Region::query()->inRandomOrder()->value('id'),// 使用現有的ID
             'name' => fake('zh_TW')->country(),
-            'name_local' => fake()->country(),
+            'name_en' => fake()->country(),
             'code' => strtoupper(fake()->lexify('??')),
             'slug' => fake()->country(),
             'status' => fake()->boolean(),

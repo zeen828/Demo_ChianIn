@@ -14,7 +14,7 @@ class RegionForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('name_local')
+                TextInput::make('name_en')
                     ->required(),
                 TextInput::make('slug')
                     ->required(),

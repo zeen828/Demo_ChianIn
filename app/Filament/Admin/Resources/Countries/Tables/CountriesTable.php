@@ -16,12 +16,14 @@ class CountriesTable
     {
         return $table
             ->columns([
-                TextColumn::make('region_id')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('region_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // 關聯
+                TextColumn::make('region.name'),
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('name_local')
+                TextColumn::make('name_en')
                     ->searchable(),
                 TextColumn::make('code')
                     ->searchable(),

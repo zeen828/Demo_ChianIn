@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('名稱');
-            $table->string('name_local')->comment('名稱(當地)');
+            $table->string('name_en')->comment('名稱(英文)');
             $table->string('slug')->comment('代碼');
             $table->integer('sort')->default(0)->comment('排序');
             $table->boolean('status')->default(false)->comment('狀態');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('region_id')->comment('區域ID');
             $table->string('name')->comment('名稱');
-            $table->string('name_local')->comment('名稱(當地)');
+            $table->string('name_en')->comment('名稱(英文)');
             $table->string('code', 10)->nullable()->comment('代碼');
             $table->string('slug')->comment('URL slug');
             $table->boolean('status')->default(false)->comment('狀態');
@@ -40,7 +40,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('country_id')->comment('國家ID');
             $table->string('name')->comment('名稱');
-            $table->string('name_local')->comment('名稱(當地)');
+            $table->string('name_en')->comment('名稱(英文)');
             $table->string('slug')->comment('URL slug');
             $table->decimal('latitude', 10, 7)->nullable()->comment('緯度');
             $table->decimal('longitude', 10, 7)->nullable()->comment('經度');

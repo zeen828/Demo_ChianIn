@@ -16,12 +16,14 @@ class CitiesTable
     {
         return $table
             ->columns([
-                TextColumn::make('country_id')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('country_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // 關聯
+                TextColumn::make('country.name'),
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('name_local')
+                TextColumn::make('name_en')
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),

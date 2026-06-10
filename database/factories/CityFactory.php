@@ -25,7 +25,7 @@ class CityFactory extends Factory
             // 'country_id' => Country::factory(),// 新建對應表
             'country_id' => Country::query()->inRandomOrder()->value('id'),// 使用現有的ID
             'name' => fake('zh_TW')->city(),
-            'name_local' => fake()->city(),
+            'name_en' => fake()->city(),
             'slug' => fake()->city(),
             'latitude' => fake()->latitude(),
             'longitude' => fake()->longitude(),

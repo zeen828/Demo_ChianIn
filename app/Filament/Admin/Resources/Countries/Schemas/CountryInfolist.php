@@ -15,7 +15,7 @@ class CountryInfolist
                 TextEntry::make('region_id')
                     ->numeric(),
                 TextEntry::make('name'),
-                TextEntry::make('name_local'),
+                TextEntry::make('name_en'),
                 TextEntry::make('code')
                     ->placeholder('-'),
                 TextEntry::make('slug'),

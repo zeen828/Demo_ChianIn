@@ -22,7 +22,7 @@ class RegionFactory extends Factory
     {
         return [
             'name' => fake('zh_TW')->name(),
-            'name_local' => fake()->name(),
+            'name_en' => fake()->name(),
             'slug' => fake()->name(),
             'sort' => fake()->numberBetween(1, 500),
             'status' => fake()->boolean(),

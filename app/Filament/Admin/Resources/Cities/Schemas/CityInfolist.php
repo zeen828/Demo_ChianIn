@@ -15,7 +15,7 @@ class CityInfolist
                 TextEntry::make('country_id')
                     ->numeric(),
                 TextEntry::make('name'),
-                TextEntry::make('name_local'),
+                TextEntry::make('name_en'),
                 TextEntry::make('slug'),
                 TextEntry::make('latitude')
                     ->numeric()

@@ -18,7 +18,7 @@ class RegionsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('name_local')
+                TextColumn::make('name_en')
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
