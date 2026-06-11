@@ -10,6 +10,8 @@
 
 ### Docker操作
 ```bash
+# windows 透過WSL使用Ubuntu
+wsl -d Ubuntu
 # 進入容器
 docker-compose exec workspace bash
 # 切換角色(檔案權限問題)
