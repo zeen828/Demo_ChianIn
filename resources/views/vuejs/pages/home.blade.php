@@ -40,8 +40,27 @@
                         @{{ loading ? '抽籤中...' : (lotResult ? '重新抽籤' : '開始抽籤') }}
                     </button>
                 </div>
+                <!-- 擲杯 -->
+                <div class="card shadow mb-4" v-if="lotResult && waitingForCup">
+                    <div class="card-header text-center">
+                        <h4>請擲杯確認此籤</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <h5>
+                            聖杯進度：
+                            @{{ currentShengbei }} / @{{ requiredShengbei }}
+                        </h5>
+                        <div v-if="cupResult" class="my-3">
+                            本次結果：
+                            <strong>@{{ cupResult }}</strong>
+                        </div>
+                        <button class="btn btn-warning btn-lg" @click="throwCup">
+                            擲杯
+                        </button>
+                    </div>
+                </div>
                 <!-- 結果 -->
-                <div class="card shadow" v-if="lotResult">
+                <div class="card shadow" v-if="lotResult && !waitingForCup">
                     <div class="card-header text-center">
                         <h3 class="mb-0">
                             @{{ lotResult.title }}
@@ -88,7 +107,12 @@
                     // 抽籤結果
                     lotResult: null,
                     // 是否正在讀取
-                    loading: false
+                    loading: false,
+                    // ===== 擲杯 =====
+                    requiredShengbei: 3, // 需要幾個聖杯
+                    currentShengbei: 0,  // 目前累積聖杯
+                    cupResult: null,     // 最近一次結果
+                    waitingForCup: false // 是否進入擲杯階段
                 };
             },
             mounted() {
@@ -111,10 +135,31 @@
                         const response =await Fortune.draw(
                                 this.selectedSystem
                         );
-                        this.lotResult = response.data.data;;
+                        this.lotResult = response.data.data;
+                        // 初始化擲杯
+                        this.currentShengbei = 0;
+                        this.cupResult = null;
+                        this.waitingForCup = true;
                     }
                     finally {
                         this.loading = false;
+                    }
+                },
+                throwCup() {
+                    const left = Math.random() < 0.5 ? '正' : '反';
+                    const right = Math.random() < 0.5 ? '正' : '反';
+                    if (left !== right) {
+                        this.cupResult = '聖杯';
+                        this.currentShengbei++;
+                    } else if (left === '正') {
+                        this.cupResult = '笑杯';
+                        this.currentShengbei = 0;
+                    } else {
+                        this.cupResult = '陰杯';
+                        this.currentShengbei = 0;
+                    }
+                    if (this.currentShengbei >= this.requiredShengbei) {
+                        this.waitingForCup = false;
                     }
                 }
             }
