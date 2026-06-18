@@ -21,7 +21,7 @@
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
                         <label class="form-label">
-                            籤詩系統
+                            籤詩類型選擇
                         </label>
                         <select class="form-select" v-model="selectedSystem">
                             <option value="">
@@ -44,15 +44,12 @@
                 <div class="card shadow" v-if="lotResult">
                     <div class="card-header text-center">
                         <h3 class="mb-0">
-                            第 @{{ lotResult.number }} 籤
+                            @{{ lotResult.title }}
                         </h3>
-                        <span class="badge bg-success">
-                            @{{ lotResult.level }}
-                        </span>
                     </div>
                     <div class="card-body">
                         <h5 class="text-center mb-4">
-                            @{{ lotResult.title }}
+                            @{{ lotResult.level }}
                         </h5>
                         <p class="text-center text-muted" v-html="lotResult.content">
                         </p>

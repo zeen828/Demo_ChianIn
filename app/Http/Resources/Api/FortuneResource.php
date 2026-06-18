@@ -16,7 +16,7 @@ class FortuneResource extends JsonResource
     {
         return [
             'number'  => $this->number,
-            'level'   => $this->level,
+            'level'   => $this->fortune_level,
             'title'   => $this->title,
             'content' => $this->content,
         ];
