@@ -8,6 +8,7 @@
         <meta name="author" content="@yield('author', 'will')">
 @yield('meta')
         @include('vuejs.layouts.style')
+        @include('vuejs.layouts.scripts_head')
     </head>
     <body>
         <div id="app" class="container-xl">
@@ -22,13 +23,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="/images/demo/puu.jpg" class="d-block w-100" alt="...">
+                        <img src="/images/demo/main.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/demo/puu.jpg" class="d-block w-100" alt="...">
+                        <img src="/images/demo/event-1.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/demo/puu.jpg" class="d-block w-100" alt="...">
+                        <img src="/images/demo/event-2.png" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -52,6 +53,6 @@
 
             @include('vuejs.partials.footer')
         </div>
-        @include('vuejs.layouts.scripts')
+        @include('vuejs.layouts.scripts_end')
     </body>
 </html>

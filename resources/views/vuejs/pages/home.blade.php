@@ -3,77 +3,124 @@
 @section('title', '首頁')
 
 @section('content')
-<div class="container py-4">
+            <div class="container py-4">
+                <!-- Logo -->
+                <div class="text-center mb-4">
+                    <h1 class="fw-bold">
+                        線上求籤
+                    </h1>
+                    <p class="text-muted">
+                        誠心敬意，神明指引
+                    </p>
+                </div>
+                <!-- 神像 -->
+                <div class="text-center mb-4">
+                    <img src="/images/main_god/{{ $name }}.png" class="img-fluid rounded-circle shadow" alt="主神">
+                </div>
+                <!-- 籤種 -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <label class="form-label">
+                            籤詩系統
+                        </label>
+                        <select class="form-select" v-model="selectedSystem">
+                            <option value="">
+                                請選擇籤詩系統
+                            </option>
+                            <option v-for="system in systems" :key="system.id" :value="system.id">
+                                @{{ system.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 抽籤 -->
+                <div class="d-grid mb-4">
+                    <button class="btn btn-danger btn-lg" @click="drawLot" :disabled="loading">
+                        <i class="bi bi-stars"></i>
+                        @{{ loading ? '抽籤中...' : (lotResult ? '重新抽籤' : '開始抽籤') }}
+                    </button>
+                </div>
+                <!-- 結果 -->
+                <div class="card shadow" v-if="lotResult">
+                    <div class="card-header text-center">
+                        <h3 class="mb-0">
+                            第 @{{ lotResult.number }} 籤
+                        </h3>
+                        <span class="badge bg-success">
+                            @{{ lotResult.level }}
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="text-center mb-4">
+                            @{{ lotResult.title }}
+                        </h5>
+                        <p class="text-center text-muted" v-html="lotResult.content">
+                        </p>
+                    </div>
+                </div>
+                <!-- 按鈕 -->
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <button class="btn btn-outline-primary w-100">
+                            查看解籤
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-outline-secondary w-100" @click="drawLot">
+                            重新抽籤
+                        </button>
+                    </div>
+                </div>
+            </div>
+@endsection
 
-    <!-- Logo -->
-    <div class="text-center mb-4">
-        <h1 class="fw-bold">
-            線上求籤
-        </h1>
-        <p class="text-muted">
-            誠心敬意，神明指引
-        </p>
-    </div>
-
-    <!-- 神像 -->
-    <div class="text-center mb-4">
-        <img src="https://placehold.co/300x300" class="img-fluid rounded-circle shadow" alt="神像">
-    </div>
-
-    <!-- 籤種 -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <label class="form-label">
-                籤詩系統
-            </label>
-            <select class="form-select">
-                <option>觀音一百籤</option>
-                <option>雷雨師一百籤</option>
-                <option>六十甲子籤</option>
-            </select>
-        </div>
-    </div>
-
-    <!-- 抽籤 -->
-    <div class="d-grid mb-4">
-        <button class="btn btn-danger btn-lg">
-            <i class="bi bi-stars"></i>開始抽籤
-        </button>
-    </div>
-
-    <!-- 結果 -->
-    <div class="card shadow">
-        <div class="card-header text-center">
-            <h3 class="mb-0">
-                第二十八籤
-            </h3>
-            <span class="badge bg-success">
-                上上籤
-            </span>
-        </div>
-        <div class="card-body">
-            <h5 class="text-center mb-4">
-                東邊月上正嬋娟
-            </h5>
-            <p class="text-center text-muted">
-                功名得意與君顯，前程萬里福綿綿。
-            </p>
-        </div>
-    </div>
-
-    <!-- 按鈕 -->
-    <div class="row mt-4">
-        <div class="col-6">
-            <button class="btn btn-outline-primary w-100">
-                查看解籤
-            </button>
-        </div>
-        <div class="col-6">
-            <button class="btn btn-outline-secondary w-100">
-                重新抽籤
-            </button>
-        </div>
-    </div>
-
-</div>
+@section('javascript_end')
+        <script src="/vue_js/api.js"></script>
+        <script src="/vue_js/fortune.js"></script>
+        <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    message: 'Laravel 12 + Vue 3',
+                    count: 0,
+                    // 籤詩系統列表
+                    systems: [],
+                    // 目前選擇的籤詩系統
+                    selectedSystem: '',
+                    // 抽籤結果
+                    lotResult: null,
+                    // 是否正在讀取
+                    loading: false
+                };
+            },
+            mounted() {
+                console.log('Vue 已載入');
+                // 頁面開啟先載入籤詩系統
+                this.loadSystems();
+            },
+            methods: {
+                async loadSystems() {
+                    const response = await Fortune.loadSystems();
+                    this.systems = response.data.resource_data;
+                },
+                async drawLot() {
+                    if (!this.selectedSystem) {
+                        alert('請選擇籤詩');
+                        return;
+                    }
+                    this.loading = true;
+                    try {
+                        const response =await Fortune.draw(
+                                this.selectedSystem
+                        );
+                        this.lotResult = response.data.data;;
+                    }
+                    finally {
+                        this.loading = false;
+                    }
+                }
+            }
+        }).mount('#app');
+        </script>
 @endsection
