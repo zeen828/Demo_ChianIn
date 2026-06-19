@@ -17,18 +17,18 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">主神</a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'guanyin']) }}">觀世音菩薩</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'mazu']) }}">媽祖</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'guandi']) }}">關聖帝君</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'tudigong']) }}">土地公</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'xuantian']) }}">玄天上帝</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'baosheng']) }}">保生大帝</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'chenghuang']) }}">城隍爺</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'santaizi']) }}">三太子</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'wangye']) }}">王爺公</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'yuelao']) }}">月老</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'guanyin']) }}">觀世音菩薩</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'mazu']) }}">媽祖</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'guandi']) }}">關聖帝君</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'tudigong']) }}">土地公</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'xuantian']) }}">玄天上帝</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'baosheng']) }}">保生大帝</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'chenghuang']) }}">城隍爺</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'santaizi']) }}">三太子</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'wangye']) }}">王爺公</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'yuelao']) }}">月老</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="{{ route('main-god.show', ['name' => 'satan']) }}">撒旦</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('main-god.index', ['name' => 'satan']) }}">撒旦</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">

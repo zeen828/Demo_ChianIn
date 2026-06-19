@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class MainGodController extends Controller
 {
-    public function show(Request $request, $name='guandi')
+    public function index(Request $request, $name='guandi')
     {
-        return view('vuejs.pages.home', ['name' => $name]);
+        return view('vuejs.pages.main-god', ['name' => $name]);
     }
 }
