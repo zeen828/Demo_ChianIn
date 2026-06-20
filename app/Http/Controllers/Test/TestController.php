@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Tests;
+namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TestsController extends Controller
+class TestController extends Controller
 {
     public function WebSocket(Request $request)
     {

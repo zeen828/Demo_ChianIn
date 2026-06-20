@@ -9,6 +9,6 @@ class MainGodController extends Controller
 {
     public function index(Request $request, $name='guandi')
     {
-        return view('vuejs.pages.main-god', ['name' => $name]);
+        return view('vuejs.main-god.index', ['title' => '主神::', 'name' => $name]);
     }
 }
