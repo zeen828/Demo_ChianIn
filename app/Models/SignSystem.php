@@ -19,6 +19,7 @@ class SignSystem extends Model
         'slug',
         'total_fortunes',
         'description',
+        'sort',
         'status',
     ];
 
@@ -26,6 +27,7 @@ class SignSystem extends Model
     {
         return [
             'total_fortunes' => 'integer',
+            'sort' => 'integer',
             'status' => 'boolean',
         ];
     }

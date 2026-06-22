@@ -43,7 +43,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique(['temple_id', 'sign_system_id']);
-            $table->comment('廟宇籤系統關聯');
+            $table->comment('廟宇-籤詩流派關聯');
         });
     }
 

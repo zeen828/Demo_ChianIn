@@ -33,7 +33,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique(['main_god_id', 'sign_system_id']);
-            $table->comment('主神籤系統關聯');
+            $table->comment('主神-籤詩流派關聯');
         });
 
         Schema::create('sign_systems', function (Blueprint $table) {
@@ -42,6 +42,7 @@ return new class extends Migration
             $table->string('slug')->comment('URL slug');
             $table->integer('total_fortunes')->default(0)->comment('籤總數');
             $table->longText('description')->nullable()->comment('籤流派介紹');
+            $table->integer('sort')->default(0)->comment('排序');
             $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
