@@ -14,7 +14,7 @@ body {
     body { background-attachment: scroll; }
 }
 
-/* --- 2. Header 樣式 --- */
+/* --- 2. Header 結構樣式 --- */
 .navbar-chianin {
     background-color: #4a1e1e !important;
     border-bottom: 3px solid #b22222;
@@ -31,11 +31,6 @@ body {
     transition: 0.3s;
 }
 
-.navbar-chianin .nav-link:hover {
-    color: #ffd700 !important;
-}
-
-/* Dropdown 選單 */
 .navbar-chianin .dropdown-menu {
     background-color: #fdf6e3;
     border: none;
@@ -45,11 +40,30 @@ body {
     color: #4a1e1e !important;
 }
 
-.navbar-chianin .dropdown-item:hover {
-    background-color: #d8c9a6;
+/* --- 3. 導覽互動狀態 (Active/Hover/Dropdown) --- */
+.navbar-chianin .nav-link:hover,
+.navbar-chianin .nav-link.active,
+.navbar-chianin .navbar-nav .nav-link.show {
+    color: #ffd700 !important;
 }
 
-/* 搜尋按鈕 */
+.navbar-chianin .nav-link.active {
+    border-bottom: 2px solid #ffd700;
+}
+
+.navbar-chianin .dropdown-item:hover,
+.navbar-chianin .dropdown-item.active, 
+.navbar-chianin .dropdown-item:active {
+    background-color: #d8c9a6 !important;
+    color: #4a1e1e !important;
+}
+
+.navbar-chianin .navbar-collapse .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+}
+
+/* --- 4. 搜尋與漢堡選單 --- */
 .navbar-chianin .btn-outline-success {
     border-color: #ffd700 !important;
     color: #ffd700 !important;
@@ -60,7 +74,21 @@ body {
     color: #4a1e1e !important;
 }
 
-/* --- 3. Footer 樣式 --- */
+.navbar-chianin .navbar-toggler {
+    border-color: #ffd700 !important;
+    background-color: transparent !important;
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar-chianin .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fdf6e3' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-chianin .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5);
+}
+
+/* --- 5. Footer 樣式 --- */
 .footer-chianin {
     background-color: #2e0d0d !important;
     color: #d1c4a9 !important;
@@ -87,7 +115,6 @@ body {
     border-color: #5a3e3e !important;
 }
 
-/* 版權宣告精確覆蓋 */
 .footer-chianin .text-center {
     color: #d1c4a9 !important;
     opacity: 0.7;
