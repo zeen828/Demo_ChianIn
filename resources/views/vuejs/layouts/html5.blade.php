@@ -3,12 +3,12 @@
     <head>
         <title>@yield('title', config('app.name')) | 籤到 | ChianIn</title>
         @include('vuejs.layouts.meta')
-        @include('vuejs.layouts.style')
+        @include('vuejs.layouts.style_2')
         @include('vuejs.layouts.scripts_head')
     </head>
     <body>
         <div id="app" class="container-xl">
-            @include('vuejs.partials.header')
+            @include('vuejs.partials.header_2')
 
 @section('content')
             <div id="carouselExampleIndicators" class="carousel slide ratio ratio-4x3" data-bs-ride="carousel">
@@ -47,7 +47,7 @@
             </button>
 @show
 
-            @include('vuejs.partials.footer')
+            @include('vuejs.partials.footer_2')
         </div>
         @include('vuejs.layouts.scripts_end')
     </body>

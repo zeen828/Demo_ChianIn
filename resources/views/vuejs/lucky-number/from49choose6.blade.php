@@ -4,22 +4,20 @@
 
 @section('style_custom')
         <style>
-            /* ===== 樂透球視覺樣式（預設手機版較小） ===== */
+            :root {
+                --primary-red: #b32d2e; /* 硃砂紅 */
+                --gold-accent: #d4af37; /* 香檳金 */
+                --paper-bg: #fdfaf6;    /* 宣紙底色 */
+            }
+            body { background-color: var(--paper-bg); font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; }
+            /* 號碼球優化：改為米白底、金色邊框 */
             .lotto-ball {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                /* 手機版尺寸縮小，確保 320px 螢幕也不破版 */
-                width: 34px;
-                height: 34px;
-                font-size: 0.95rem;
-                border-radius: 50%;
-                font-weight: bold;
-                color: #1a1a1a;
-                background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f0f0f0 40%, #dcdcdc 100%);
-                box-shadow: inset -2px -2px 4px rgba(0,0,0,0.2), 2px 2px 4px rgba(0,0,0,0.15);
-                border: 1px solid #ccc;
-                transition: all 0.3s ease;
+                display: inline-flex; align-items: center; justify-content: center;
+                width: 40px; height: 40px; font-size: 1rem; border-radius: 50%;
+                font-weight: 700; color: #4a3c31;
+                background: #fffdf5;
+                border: 2px solid var(--gold-accent);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
             /* 平板與電腦版（>= 576px）再回復到大尺寸 */
             @media (min-width: 576px) {

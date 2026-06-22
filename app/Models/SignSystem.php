@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SignSystem extends Model
 {
@@ -43,5 +44,10 @@ class SignSystem extends Model
         return $this->belongsToMany(Temple::class, 'temple_sign_system', 'temple_id', 'main_god_id')
             ->withPivot(['sort', 'status'])
             ->withTimestamps();
+    }
+
+    public function fortunes(): HasMany
+    {
+        return $this->hasMany(Fortune::class, 'sign_system_id', 'id');
     }
 }
