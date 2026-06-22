@@ -11,6 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('main_god', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->comment('名稱');
+            $table->string('slug')->comment('URL slug');
+            $table->longText('description')->nullable()->comment('介紹');
+            $table->integer('sort')->comment('順序');
+            $table->boolean('status')->default(false)->comment('狀態');
+            $table->timestamps();
+
+            $table->comment('主神');
+        });
+
         Schema::create('sign_systems', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('名稱');
@@ -29,9 +41,10 @@ return new class extends Migration
             $table->integer('number')->comment('第幾籤');
             $table->string('title')->nullable()->comment('籤詩標題');
             $table->text('content')->nullable()->comment('籤詩內容');
-            $table->string('fortune_level')->nullable()->comment('吉凶分類');// 大吉 / 吉 / 中吉 / 凶
-            $table->string('code')->nullable()->comment('籤詩代碼');// 方便API與排序
-            $table->string('image')->nullable()->comment('籤詩圖片');// 方便API與排序
+            $table->text('summary')->nullable()->comment('籤詩摘要');
+            $table->string('level')->nullable()->comment('吉凶分類');// 大吉 / 吉 / 中吉 / 凶
+            $table->string('code')->nullable()->comment('籤詩代碼');
+            $table->string('image')->nullable()->comment('籤詩圖片');
             $table->text('memo')->nullable()->comment('備忘錄');
             $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();

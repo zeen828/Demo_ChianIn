@@ -26,7 +26,7 @@ class FortuneFactory extends Factory
             'number' => fake()->numberBetween(1, 100),
             'title' => fake('zh_TW')->title(),
             'content' => fake('zh_TW')->paragraphs(3, true),
-            'fortune_level' => fake()->randomElement([
+            'level' => fake()->randomElement([
                 '大吉',
                 '吉',
                 '中吉',

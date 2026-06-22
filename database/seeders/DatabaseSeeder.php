@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+// Models
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,8 +26,11 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             CitySeeder::class,
 
+            MainGodSeeder::class,
+
             SignSystemSeeder::class,
-            FortuneSeeder::class,
+            Fortune01Seeder::class,//
+            Fortune02Seeder::class,//
             FortuneTranslationSeeder::class,
             InterpretationTranslationSeeder::class,
 

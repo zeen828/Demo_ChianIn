@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+// Model
 use App\Models\Temple;
-use Illuminate\Database\Eloquent\Factories\Factory;
-// Models
 use App\Models\City;
+//
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends Factory<Temple>
