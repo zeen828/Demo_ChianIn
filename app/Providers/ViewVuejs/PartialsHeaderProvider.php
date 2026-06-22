@@ -24,7 +24,7 @@ class PartialsHeaderProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(
-            'vuejs.partials.header_2',
+            'vuejs.partials.header',
             function ($view) {
                 // $view->with('MainGodData', MainGod::where('status', true)->get());
 

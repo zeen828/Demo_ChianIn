@@ -1,4 +1,4 @@
-            <footer class="mt-5 py-5 bg-light border-top d-none d-md-block">
+            <footer class="mt-5 py-5 bg-light border-top d-none d-md-block footer-chianin">
 @section('footer')
                 <div class="container">
                     <div class="row text-center text-md-start">

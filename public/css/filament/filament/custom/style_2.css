@@ -1,0 +1,94 @@
+/* --- 1. 全域背景設定 --- */
+body {
+    background-image: url('/images/custom/bg-1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #fdf6e3;
+    min-height: 100vh;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    body { background-attachment: scroll; }
+}
+
+/* --- 2. Header 樣式 --- */
+.navbar-chianin {
+    background-color: #4a1e1e !important;
+    border-bottom: 3px solid #b22222;
+    padding: 1rem 0;
+}
+
+.navbar-chianin .navbar-brand {
+    color: #fdf6e3 !important;
+    font-weight: bold;
+}
+
+.navbar-chianin .nav-link {
+    color: #fdf6e3 !important;
+    transition: 0.3s;
+}
+
+.navbar-chianin .nav-link:hover {
+    color: #ffd700 !important;
+}
+
+/* Dropdown 選單 */
+.navbar-chianin .dropdown-menu {
+    background-color: #fdf6e3;
+    border: none;
+}
+
+.navbar-chianin .dropdown-item {
+    color: #4a1e1e !important;
+}
+
+.navbar-chianin .dropdown-item:hover {
+    background-color: #d8c9a6;
+}
+
+/* 搜尋按鈕 */
+.navbar-chianin .btn-outline-success {
+    border-color: #ffd700 !important;
+    color: #ffd700 !important;
+}
+
+.navbar-chianin .btn-outline-success:hover {
+    background-color: #ffd700 !important;
+    color: #4a1e1e !important;
+}
+
+/* --- 3. Footer 樣式 --- */
+.footer-chianin {
+    background-color: #2e0d0d !important;
+    color: #d1c4a9 !important;
+    border-top: 4px solid #b22222 !important;
+    padding: 2rem 0;
+}
+
+.footer-chianin h5, 
+.footer-chianin h6 {
+    color: #fdf6e3 !important;
+}
+
+.footer-chianin a, 
+.footer-chianin p {
+    color: #d1c4a9 !important;
+}
+
+.footer-chianin a:hover {
+    color: #ffd700 !important;
+    text-decoration: underline !important;
+}
+
+.footer-chianin hr {
+    border-color: #5a3e3e !important;
+}
+
+/* 版權宣告精確覆蓋 */
+.footer-chianin .text-center {
+    color: #d1c4a9 !important;
+    opacity: 0.7;
+}
