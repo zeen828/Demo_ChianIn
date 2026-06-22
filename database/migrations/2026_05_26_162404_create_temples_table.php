@@ -36,12 +36,14 @@ return new class extends Migration
 
         Schema::create('temple_sign_system', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('temple_id')->comment('廟宇ID');
-            $table->foreignId('sign_system_id')->comment('籤流派ID');
-            $table->boolean('is_primary')->default(false)->comment('是否主要使用流派');
+            $table->unsignedBigInteger('temple_id')->comment('廟宇ID');
+            $table->unsignedBigInteger('sign_system_id')->comment('籤系統ID');
+            $table->integer('sort')->default(0)->comment('排序');
+            $table->boolean('status')->default(true)->comment('狀態');
             $table->timestamps();
 
-            $table->comment('廟宇與籤流派關聯表');
+            $table->unique(['temple_id', 'sign_system_id']);
+            $table->comment('廟宇籤系統關聯');
         });
     }
 

@@ -36,4 +36,12 @@ class SignSystem extends Model
             ->withPivot(['sort', 'status'])
             ->withTimestamps();
     }
+
+    // 關聯
+    public function temples()
+    {
+        return $this->belongsToMany(Temple::class, 'temple_sign_system', 'temple_id', 'main_god_id')
+            ->withPivot(['sort', 'status'])
+            ->withTimestamps();
+    }
 }

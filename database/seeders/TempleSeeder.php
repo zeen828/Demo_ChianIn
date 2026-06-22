@@ -20,6 +20,8 @@ class TempleSeeder extends Seeder
             $this->datas(),
             ['id']
         );
+
+        $this->createRelations();
     }
 
     private function datas(): array
@@ -45,5 +47,21 @@ class TempleSeeder extends Seeder
                 'status' => true,
             ],
         ];
+    }
+
+    private function createRelations(): void
+    {
+        $relations = [
+            // 廟宇ID => 籤系統ID
+            1 => [
+                1 => ['sort' => 1, 'status' => true],
+                2 => ['sort' => 2, 'status' => true],
+            ],
+        ];
+
+        foreach ($relations as $templeId => $systems) {
+            $temple = Temple::find($templeId);
+            $temple->signSystems()->sync($systems);
+        }
     }
 }

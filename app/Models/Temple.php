@@ -42,4 +42,12 @@ class Temple extends Model
             'status' => 'boolean',
         ];
     }
+
+    // 關聯
+    public function signSystems()
+    {
+        return $this->belongsToMany(SignSystem::class, 'temple_sign_system', 'temple_id', 'sign_system_id')
+            ->withPivot(['sort', 'status'])
+            ->withTimestamps();
+    }
 }

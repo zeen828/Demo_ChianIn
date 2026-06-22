@@ -20,6 +20,8 @@ class MainGodSeeder extends Seeder
             $this->datas(),
             ['id']
         );
+
+        $this->createRelations();
     }
 
     private function datas(): array
@@ -136,6 +138,63 @@ class MainGodSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
+            [
+                'id' => 11,
+                'name' => '撒旦',
+                'slug' => 'satan',
+                'description' => '',
+                'image' => '/images/main_god/satan.png',
+                'sort' => 11,
+                'status' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
         ];
+    }
+
+    private function createRelations(): void
+    {
+        $relations = [
+            // 主神ID => 籤系統ID
+            1 => [
+                1 => ['sort' => 1, 'status' => true],
+                2 => ['sort' => 2, 'status' => true],
+            ],
+            2 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+            3 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+            4 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+            5 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+            6 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+            7 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+            8 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+            9 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+            10 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+            11 => [
+                1 => ['sort' => 1, 'status' => true],
+            ],
+        ];
+
+        foreach ($relations as $godId => $systems) {
+            $god = MainGod::find($godId);
+            $god->signSystems()->sync($systems);
+        }
     }
 }
