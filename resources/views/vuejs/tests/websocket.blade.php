@@ -5,7 +5,7 @@
 @section('content')
 @endsection
 
-@section('script_custom')
+@section('script_end_custom')
         <script>
             const { createApp } = Vue
             createApp({

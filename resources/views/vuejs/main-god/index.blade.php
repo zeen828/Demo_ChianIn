@@ -126,7 +126,7 @@
             </div>
 @endsection
 
-@section('script_custom')
+@section('script_end_custom')
         <script src="/vue_js/api.js"></script>
         <script src="/vue_js/fortune.js"></script>
         <script>

@@ -90,7 +90,7 @@
             </div>
 @endsection
 
-@section('javascript_end')
+@section('script_end_custom')
         <script src="/vue_js/api.js"></script>
         <script src="/vue_js/fortune.js"></script>
         <script>

@@ -53,22 +53,28 @@
                 <!-- 標題說明 -->
                 <div class="text-center mb-4">
                     <h1 class="fw-bold text-danger"><i class="bi bi-ticket-perforated"></i> 天官賜福</h1>
-                    <p class="text-muted">大樂透 49選6 隨機號碼生成</p>
+                    <p class="text-muted">參考大樂透 49選6 隨機號碼生成</p>
                 </div>
                 <!-- 控制卡片 -->
                 <div class="card shadow-sm mb-4">
-                    <div class="card-body row align-items-end g-3">
-                        <div class="col-7">
-                            <label class="form-label fw-bold">請選擇產生筆數 (最多 10 筆)</label>
-                            <select class="form-select form-select-lg" v-model.number="countToGenerate">
-                                <option v-for="n in 10" :key="n" :value="n">@{{ n }} 筆結果</option>
-                            </select>
+                    <div class="card-body align-items-end g-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="form-label fw-bold">請選擇產生筆數 (最多 10 筆)</label>
+                            </div>
                         </div>
-                        <div class="col-5">
-                            <button class="btn btn-danger btn-lg w-100 py-2 fw-bold" @click="generateLottoNumbers" :disabled="isRolling">
-                                <i class="bi bi-arrow-repeat" :class="{'spin': isRolling}"></i>
-                                @{{ isRolling ? '搖珠中...' : '生成' }}
-                            </button>
+                        <div class="row">
+                            <div class="col-7">
+                                <select class="form-select form-select-lg" v-model.number="countToGenerate">
+                                    <option v-for="n in 10" :key="n" :value="n">@{{ n }} 筆結果</option>
+                                </select>
+                            </div>
+                            <div class="col-5">
+                                <button class="btn btn-danger btn-lg w-100 py-2 fw-bold" @click="generateLottoNumbers" :disabled="isRolling">
+                                    <i class="bi bi-arrow-repeat" :class="{'spin': isRolling}"></i>
+                                    @{{ isRolling ? '抽球' : '生成' }}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,10 +106,11 @@
                     <i class="bi bi-egg-fried text-muted display-4"></i>
                     <p class="text-muted mt-2 mb-0">誠心默念祈願，選擇筆數後點擊按鈕即可開出神明號碼。</p>
                 </div>
+                @include('vuejs.lucky-number.warning')
             </div>
 @endsection
 
-@section('script_custom')
+@section('script_end_custom')
         <script>
             const { createApp } = Vue
             createApp({

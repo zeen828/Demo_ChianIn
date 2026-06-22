@@ -1,6 +1,6 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-@section('script_custom')
+@section('script_end_custom')
         <script>
             const { createApp } = Vue
             createApp({
