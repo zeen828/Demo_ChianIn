@@ -28,4 +28,12 @@ class SignSystem extends Model
             'status' => 'boolean',
         ];
     }
+
+    // 關聯
+    public function mainGods()
+    {
+        return $this->belongsToMany(MainGod::class, 'main_god_sign_system', 'sign_system_id', 'main_god_id')
+            ->withPivot(['sort', 'status'])
+            ->withTimestamps();
+    }
 }

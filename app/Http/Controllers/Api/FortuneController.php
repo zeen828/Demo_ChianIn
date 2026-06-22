@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // Models
+use App\Models\MainGod;
 use App\Models\SignSystem;
 use App\Models\Fortune;
 // Resource
@@ -56,7 +57,8 @@ class FortuneController extends Controller
         //
     }
 
-    public function systems()
+    // 臨時 拉全部資料
+    public function systems_back()
     {
         // 使用 Eloquent 拉取所有資料
         // 如果資料表內的欄位名稱就是 id 和 name，直接回傳即可
@@ -89,6 +91,36 @@ class FortuneController extends Controller
         //         'name' => '六十甲子籤'
         //     ]
         // ]);
+    }
+
+    // 帶變數拉主神資料庫資料再拉詩籤流派關聯資表
+    public function systems(Request $request)
+    {
+        $slug = $request->query('slug', 'guanyin');
+
+        $MainGod = MainGod::with([
+            'signSystems' => function ($query) {
+                $query->orderBy('id', 'asc');
+            }
+        ])
+        ->where('slug', $slug)
+        ->first();
+
+        if (!$MainGod) {
+            return response()->json([
+                'message' => '找不到主神'
+            ], 404);
+        }
+
+        $resource = SignSystemResource::collection(
+            $MainGod->signSystems
+        );
+
+        return response()->json([
+            'main_god' => $MainGod->name,
+            'raw_count' => $MainGod->signSystems->count(),
+            'resource_data' => $resource,
+        ]);
     }
 
     public function drawLot(Request $request)

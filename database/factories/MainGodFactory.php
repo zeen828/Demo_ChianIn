@@ -23,6 +23,7 @@ class MainGodFactory extends Factory
             'name' => fake('zh_TW')->name(),
             'slug' => fake()->name(),
             'description' => fake('zh_TW')->paragraphs(3, true),
+            'image' => null,
             'sort' => fake()->numberBetween(1, 100),
             'status' => fake()->boolean(80),
         ];

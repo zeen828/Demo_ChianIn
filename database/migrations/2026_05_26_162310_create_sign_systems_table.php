@@ -16,11 +16,24 @@ return new class extends Migration
             $table->string('name')->comment('名稱');
             $table->string('slug')->comment('URL slug');
             $table->longText('description')->nullable()->comment('介紹');
+            $table->string('image')->nullable()->comment('圖片');
             $table->integer('sort')->comment('順序');
             $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
             $table->comment('主神');
+        });
+
+        Schema::create('main_god_sign_system', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('main_god_id')->comment('主神ID');
+            $table->unsignedBigInteger('sign_system_id')->comment('籤系統ID');
+            $table->integer('sort')->default(0)->comment('排序');
+            $table->boolean('status')->default(true)->comment('狀態');
+            $table->timestamps();
+
+            $table->unique(['main_god_id', 'sign_system_id']);
+            $table->comment('主神籤系統關聯');
         });
 
         Schema::create('sign_systems', function (Blueprint $table) {

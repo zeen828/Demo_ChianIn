@@ -1,7 +1,12 @@
 const Fortune = {
-    async loadSystems() {
+    async loadSystems(slug) {
         return await Api.get(
-            '/api/fortune-systems'
+            '/api/fortune-systems',
+            {
+                params: {
+                    slug: slug
+                }
+            }
         );
     },
     async draw(systemId) {
