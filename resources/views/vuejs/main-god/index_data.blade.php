@@ -1,6 +1,6 @@
 @extends('vuejs.layouts.html5')
 
-@section('title', $MainGod->name . ' | 線上抽籤')
+@section('title', $Title)
 
 @section('style_custom')
         <style>

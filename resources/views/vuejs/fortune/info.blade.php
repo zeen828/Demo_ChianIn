@@ -1,17 +1,147 @@
 @extends('vuejs.layouts.html5')
 
-@section('title', '首頁')
+@section('title', $Title)
+
+@section('style_custom')
+        <style>
+            /* =========================
+            卷軸背景
+            ========================= */
+            .scroll-content {
+                /* 卷軸背景圖 */
+                background: url('/images/custom/fortune-bg.png')
+                            center center / 100% 100% no-repeat;
+
+                min-height: 500px;
+
+                /* 讓文字不要貼近卷軸邊框 */
+                padding:
+                    80px   /* 上 */
+                    120px  /* 右 */
+                    80px   /* 下 */
+                    120px; /* 左 */
+
+                position: relative;
+                z-index: 1;
+            }
+
+
+            /* =========================
+            籤詩直書容器
+            ========================= */
+            .fortune-container {
+                display: flex;
+
+                /* 由右往左排列欄位 */
+                flex-direction: row;
+
+                /* 內容置中 */
+                justify-content: center;
+
+                min-height: 500px;
+            }
+
+
+            /* =========================
+            共用直書設定
+            ========================= */
+            .fortune-title,
+            .fortune-column {
+                /* 傳統中文直排 */
+                writing-mode: vertical-rl;
+                text-orientation: upright;
+            }
+
+
+            /* =========================
+            籤詩標題
+            ========================= */
+            .fortune-title {
+                font-size: 2rem;
+                font-weight: bold;
+
+                /* 與籤詩內容保持距離 */
+                margin-left: 40px;
+            }
+
+
+            /* =========================
+            籤詩內容
+            ========================= */
+            .fortune-column {
+                font-size: 1.5rem;
+                line-height: 2;
+
+                /* 欄位間距 */
+                margin-left: 20px;
+            }
+
+
+            /* =========================
+            籤到印章
+            ========================= */
+            .fortune-seal {
+                position: absolute;
+
+                /* 左下角位置 */
+                left: 260px;
+                bottom: 140px;
+
+                width: 90px;
+                height: auto;
+
+                /* 微透明增加真實感 */
+                opacity: 0.85;
+
+                /* 微微傾斜 */
+                transform: rotate(15deg);
+
+                z-index: 10;
+
+                /* 不影響滑鼠操作 */
+                pointer-events: none;
+            }
+
+
+            /* =========================
+            未使用 (可刪除)
+            ========================= */
+
+            /*
+            .scroll-container {
+                position: relative;
+                min-height: 500px;
+            }
+
+            .vertical-text {
+                writing-mode: vertical-rl;
+            }
+
+            .vertical-poem {
+                writing-mode: vertical-rl;
+                text-orientation: upright;
+                line-height: 2;
+            }
+            */
+        </style>
+@endsection
 
 @section('content')
 <div class="container my-5">
-    <!-- 麵包屑導航 (SEO 加分) -->
-    <nav aria-label="breadcrumb" class="mb-4">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">首頁</a></li>
-            <li class="breadcrumb-item"><a href="/fortune/list">籤詩集</a></li>
-            <li class="breadcrumb-item active">{{ $fortune->title }}</li>
-        </ol>
-    </nav>
+
+    <div class="card text-center">
+        <div class="card-header">
+        Featured
+        </div>
+        <div class="card-body scroll-content fortune-container">
+            <img src="{{ asset('/images/custom/seal-1.png') }}" class="fortune-seal" alt="籤到章">
+            <p class="card-text fortune-column">{!! $fortune->content !!}</p>
+            <h5 class="card-title fortune-title">{{ $fortune->title }}</h5>
+        </div>
+        <div class="card-footer">
+        2 days ago
+        </div>
+    </div>
 
     <div class="row">
         <!-- 左側主內容區 -->

@@ -1,6 +1,6 @@
 @extends('vuejs.layouts.html5')
 
-@section('title', '籤詩集')
+@section('title', $Title)
 
 @section('content')
 <div class="container my-5">

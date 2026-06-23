@@ -31,11 +31,13 @@ class Country extends Model
         ];
     }
 
+    // 關聯
     public function region(): BelongsTo
     {
         return $this->belongsTo(Region::class, 'region_id', 'id');
     }
 
+    // 關聯
     public function city(): HasMany
     {
         return $this->hasMany(City::class, 'country_id', 'id');

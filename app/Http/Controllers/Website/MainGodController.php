@@ -21,7 +21,7 @@ class MainGodController extends Controller
         // $MainGod->signSystems()->sync([1 => ['sort' => 1, 'status' => true], 2 => ['sort' => 2, 'status' => true]]);
         // print_r($god);
 
-        return view('vuejs.main-god.index_data', ['title' => '主神::', 'name' => $name, 'MainGod' => $MainGod]);
-        return view('vuejs.main-god.index', ['title' => '主神::', 'name' => $name, 'MainGod' => $MainGod]);
+        return view('vuejs.main-god.index_data', ['Title' => sprintf('%s | 線上抽籤', $MainGod->name), 'MainGod' => $MainGod]);
+        return view('vuejs.main-god.index', ['Title' => '主神::', 'MainGod' => $MainGod]);
     }
 }

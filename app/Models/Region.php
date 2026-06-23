@@ -30,6 +30,7 @@ class Region extends Model
         ];
     }
 
+    // 關聯
     public function countries(): HasMany
     {
         return $this->hasMany(Country::class, 'region_id', 'id');

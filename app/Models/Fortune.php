@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Fortune extends Model
 {
@@ -31,5 +32,11 @@ class Fortune extends Model
             'number' => 'integer',
             'status' => 'boolean',
         ];
+    }
+
+    // 關聯
+    public function signsystem(): BelongsTo
+    {
+        return $this->belongsTo(SignSystem::class, 'sign_system_id', 'id');
     }
 }

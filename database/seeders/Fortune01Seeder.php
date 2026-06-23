@@ -16,6 +16,7 @@ class Fortune01Seeder extends Seeder
     {
         // Fortune::factory(150)->create();
 
+        // 雷雨師一百籤
         Fortune::upsert(
             $this->datas(),
             ['id']
@@ -24,6 +25,7 @@ class Fortune01Seeder extends Seeder
 
     private function datas(): array
     {
+        
         $now = now();
         return [
             [

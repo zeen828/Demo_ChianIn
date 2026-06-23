@@ -12,7 +12,8 @@ use App\Http\Controllers\Website\LuckyNumberController;
 // });
 
 Route::get('/', function () {
-    return view('vuejs.pages.demo');
+    $title = '首頁DEMO';
+    return view('vuejs.pages.demo', ['Title' => $title]);
 })->name('index');
 
 // 測試區域

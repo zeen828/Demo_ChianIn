@@ -1,6 +1,6 @@
 @extends('vuejs.layouts.html5')
 
-@section('title', $title)
+@section('title', $Title)
 
 @section('style_custom')
         <style>

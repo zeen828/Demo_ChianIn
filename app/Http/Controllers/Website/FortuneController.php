@@ -13,14 +13,14 @@ class FortuneController extends Controller
     public function List(Request $request)
     {
         $sign = SignSystem::with('fortunes')->get();
-        // print_r($sign);exit();
 
-        return view('vuejs.fortune.list', ['categories' => $sign]);
+        return view('vuejs.fortune.list', ['Title' => '籤詩集', 'categories' => $sign]);
     }
 
     public function Info(Request $request, $no='1')
     {
-        $fortune = Fortune::find($no);
-        return view('vuejs.fortune.info', ['title' => '主神::', 'name' => 'test', 'fortune' => $fortune]);
+        $fortune = Fortune::with('signsystem')->find($no);
+
+        return view('vuejs.fortune.info', ['Title' => sprintf('%s | 籤詩', $fortune->title), 'fortune' => $fortune]);
     }
 }

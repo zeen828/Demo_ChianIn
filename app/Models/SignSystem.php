@@ -48,6 +48,7 @@ class SignSystem extends Model
             ->withTimestamps();
     }
 
+    // 關聯
     public function fortunes(): HasMany
     {
         return $this->hasMany(Fortune::class, 'sign_system_id', 'id');

@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 // Models
 use App\Models\Fortune;
 
-class Fortune02Seeder extends Seeder
+class Fortune07Seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class Fortune02Seeder extends Seeder
     {
         // Fortune::factory(150)->create();
 
-        // 六十甲子籤
+        // 澎湖天后宮一百籤
         Fortune::upsert(
             $this->datas(),
             ['id']
@@ -28,8 +28,8 @@ class Fortune02Seeder extends Seeder
         $now = now();
         return [
             [
-                'id' => 201,
-                'sign_system_id' => 2,
+                'id' => 701,
+                'sign_system_id' => 7,
                 'number' => 1,
                 'title' => '第一籤',
                 'content' => '寶馬盈門吉慶多，<br/>官司有理勸調和，<br/>萬般得利稱全福，<br/>一箭紅心定中科。',
