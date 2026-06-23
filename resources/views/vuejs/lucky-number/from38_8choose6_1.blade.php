@@ -58,73 +58,73 @@
 @endsection
 
 @section('content')
-            <!-- ===== 主要核心區塊 ===== -->
-            <div class="container py-4">
-                <!-- 標題說明 -->
-                <div class="text-center mb-4">
-                    <h1 class="fw-bold text-danger"><i class="bi bi-ticket-perforated"></i> 天官賜福</h1>
-                    <p class="text-muted">參考威力彩 38選6 + 8選1 隨機號碼生成</p>
-                </div>
-                <!-- 控制卡片 -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body align-items-end g-3">
-                        <div class="row">
-                            <div class="col-12">
-                                <label class="form-label fw-bold">請選擇產生筆數 (最多 10 筆)</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <select class="form-select form-select-lg" v-model.number="countToGenerate">
-                                    <option v-for="n in 10" :key="n" :value="n">@{{ n }} 筆結果</option>
-                                </select>
-                            </div>
-                            <div class="col-5">
-                                <button class="btn btn-danger btn-lg w-100 py-2 fw-bold" @click="generateSuperLottery" :disabled="isRolling">
-                                    <i class="bi bi-arrow-repeat" :class="{'spin': isRolling}"></i>
-                                    @{{ isRolling ? '抽球' : '生成' }}
-                                </button>
-                            </div>
-                        </div>
+                <!-- ===== 主要核心區塊 ===== -->
+                <div class="container py-4">
+                    <!-- 標題說明 -->
+                    <div class="text-center mb-4">
+                        <h1 class="fw-bold text-danger"><i class="bi bi-ticket-perforated"></i> 天官賜福</h1>
+                        <p class="text-muted">參考威力彩 38選6 + 8選1 隨機號碼生成</p>
                     </div>
-                </div>
-                <!-- 結果顯示區塊 -->
-                <div v-if="lottoResults.length > 0">
-                    <div class="d-flex justify-content-between align-items-center mb-2 px-1">
-                        <h6 class="text-secondary small mb-0">號碼已完成 (藍球為第一區，黃球為第二區)：</h6>
-                        <button class="btn btn-outline-secondary btn-sm" @click="clearResults">清空</button>
-                    </div>
-                    <!-- 號碼清單 -->
-                    <div class="card shadow-sm mb-3 lotto-row" v-for="(group, index) in lottoResults" :key="index">
-                        <!-- 用 flex-column 和 flex-sm-row 達成：手機時直式排列，平板以上橫式排列 -->
-                        <div class="card-body d-flex flex-column flex-sm-row align-items-center justify-content-between py-3 gap-2">
-                            <!-- 組別標籤 -->
-                            <span class="badge bg-primary rounded-pill fs-6 px-3">
-                                第 @{{ index + 1 }} 組
-                            </span>
-                            <!-- 雙區號碼容器（優化手機防破版間距） -->
-                            <div class="d-flex gap-1 gap-sm-2 justify-content-center">
-                                <!-- 第一區 6 顆藍球 -->
-                                <div v-for="(num, numIdx) in group.zone1" :key="'z1-'+numIdx" class="lotto-ball zone-1 ball-pop-enter-active">
-                                    @{{ formatNumber(num) }}
+                    <!-- 控制卡片 -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body align-items-end g-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">請選擇產生筆數 (最多 10 筆)</label>
                                 </div>
-                                <!-- 視覺分隔加號 -->
-                                <div class="zone-divider px-1 text-muted fw-bold">+</div>
-                                <!-- 第二區 1 顆黃球 -->
-                                <div class="lotto-ball zone-2 ball-pop-enter-active">
-                                    @{{ formatNumber(group.zone2) }}
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <select class="form-select form-select-lg" v-model.number="countToGenerate">
+                                        <option v-for="n in 10" :key="n" :value="n">@{{ n }} 筆結果</option>
+                                    </select>
+                                </div>
+                                <div class="col-5">
+                                    <button class="btn btn-danger btn-lg w-100 py-2 fw-bold" @click="generateSuperLottery" :disabled="isRolling">
+                                        <i class="bi bi-arrow-repeat" :class="{'spin': isRolling}"></i>
+                                        @{{ isRolling ? '抽球' : '生成' }}
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- 結果顯示區塊 -->
+                    <div v-if="lottoResults.length > 0">
+                        <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+                            <h6 class="text-secondary small mb-0">號碼已完成 (藍球為第一區，黃球為第二區)：</h6>
+                            <button class="btn btn-outline-secondary btn-sm" @click="clearResults">清空</button>
+                        </div>
+                        <!-- 號碼清單 -->
+                        <div class="card shadow-sm mb-3 lotto-row" v-for="(group, index) in lottoResults" :key="index">
+                            <!-- 用 flex-column 和 flex-sm-row 達成：手機時直式排列，平板以上橫式排列 -->
+                            <div class="card-body d-flex flex-column flex-sm-row align-items-center justify-content-between py-3 gap-2">
+                                <!-- 組別標籤 -->
+                                <span class="badge bg-primary rounded-pill fs-6 px-3">
+                                    第 @{{ index + 1 }} 組
+                                </span>
+                                <!-- 雙區號碼容器（優化手機防破版間距） -->
+                                <div class="d-flex gap-1 gap-sm-2 justify-content-center">
+                                    <!-- 第一區 6 顆藍球 -->
+                                    <div v-for="(num, numIdx) in group.zone1" :key="'z1-'+numIdx" class="lotto-ball zone-1 ball-pop-enter-active">
+                                        @{{ formatNumber(num) }}
+                                    </div>
+                                    <!-- 視覺分隔加號 -->
+                                    <div class="zone-divider px-1 text-muted fw-bold">+</div>
+                                    <!-- 第二區 1 顆黃球 -->
+                                    <div class="lotto-ball zone-2 ball-pop-enter-active">
+                                        @{{ formatNumber(group.zone2) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 初始提示畫面 -->
+                    <div class="text-center py-5 border rounded bg-light" v-else>
+                        <i class="bi bi-lightning-charge text-warning display-4"></i>
+                        <p class="text-muted mt-2 mb-0">誠心默念祈願，選擇筆數後點擊按鈕即可開出神明號碼。</p>
+                    </div>
+                    @include('vuejs.lucky-number.warning')
                 </div>
-                <!-- 初始提示畫面 -->
-                <div class="text-center py-5 border rounded bg-light" v-else>
-                    <i class="bi bi-lightning-charge text-warning display-4"></i>
-                    <p class="text-muted mt-2 mb-0">誠心默念祈願，選擇筆數後點擊按鈕即可開出神明號碼。</p>
-                </div>
-                @include('vuejs.lucky-number.warning')
-            </div>
 @endsection
 
 @section('script_end_custom')

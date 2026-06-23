@@ -13,8 +13,8 @@
 @endsection
 
 @section('content')
-            <div>
-            </div>
+                <div>
+                </div>
 @endsection
 
 @section('script_end_custom')

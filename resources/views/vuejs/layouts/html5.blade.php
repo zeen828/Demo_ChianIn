@@ -7,9 +7,12 @@
         @include('vuejs.layouts.scripts_head')
     </head>
     <body>
-        <div id="app" class="container-xl">
+    <!-- Sticky Footer（黏性頁尾）class="d-flex flex-column min-vh-100" -->
+        <div id="app" class="container-xl d-flex flex-column min-vh-100">
             @include('vuejs.partials.header')
 
+            <!-- Sticky Footer（黏性頁尾）main class="flex-grow-1" -->
+            <main class="flex-grow-1">
 @section('content')
             <div id="carouselExampleIndicators" class="carousel slide ratio ratio-4x3" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -46,6 +49,7 @@
                 點擊次數：@{{ count }}
             </button>
 @show
+            </main>
 
             @include('vuejs.partials.footer')
         </div>

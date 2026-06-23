@@ -3,15 +3,16 @@
                 <div class="container">
                     <div class="row text-center text-md-start">
                         <!-- 品牌說明 -->
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4">
                             <h5 class="fw-bold text-primary">ChianIn 籤到</h5>
                             <p class="text-muted small">
                                 結合傳統籤詩文化與現代 AI 科技，為您提供隨時隨地的線上求籤服務，指引心靈方向。
                             </p>
                         </div>
                         <!-- 快速連結 -->
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4">
                             <h6 class="fw-bold">快速連結</h6>
+                            <!-- list-unstyled:清單。消除 -->
                             <ul class="list-unstyled">
                                 <li><a href="#" class="text-decoration-none text-muted">常見問題</a></li>
                                 <li><a href="#" class="text-decoration-none text-muted">關於我們</a></li>
@@ -19,7 +20,7 @@
                             </ul>
                         </div>
                         <!-- 聯絡方式 -->
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4">
                             <h6 class="fw-bold">聯絡我們</h6>
                             <p class="text-muted small">
                                 <i class="bi bi-envelope"></i> contact@chianin.test<br>
