@@ -4,6 +4,18 @@
 
 @section('style_custom')
         <style>
+            .main-god-image {
+                max-width: 320px;
+                width: 100%;
+                transition: all .3s ease;
+            }
+
+            /* 手機 */
+            @media (max-width: 768px) {
+                .main-god-image {
+                    max-width: 200px; /* 300 * 70% */
+                }
+            }
             /* ===== 擲杯 3D 動畫特效 ===== */
             .cup-container {
                 perspective: 600px;
@@ -40,7 +52,7 @@
                     </div>
                     <!-- 神像 -->
                     <div class="text-center mb-4">
-                        <img src="{{ $MainGod->image_url }}" class="img-fluid rounded-circle shadow" alt="{{ $MainGod->name }}">
+                        <img src="{{ $MainGod->image_url }}" class="img-fluid rounded-circle shadow main-god-image" alt="{{ $MainGod->name }}">
                     </div>
                     <div class="text-center mb-4">
                         <p class="text-muted">誠心敬意，神明指引</p>

@@ -158,37 +158,47 @@ class MainGodSeeder extends Seeder
             // 主神ID => 籤系統ID
             1 => [
                 1 => ['sort' => 1, 'status' => true],
-                2 => ['sort' => 2, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             2 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             3 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             4 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             5 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             6 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             7 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             8 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             9 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             10 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
             11 => [
                 1 => ['sort' => 1, 'status' => true],
+                5 => ['sort' => 5, 'status' => true],
             ],
         ];
 
