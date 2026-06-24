@@ -31,19 +31,19 @@ return new class extends Migration
             $table->boolean('status')->default(false)->comment('狀態');
             $table->timestamps();
 
-            $table->comment('廟宇資料表');
+            $table->comment('廟宇');
         });
 
-        Schema::create('temple_sign_system', function (Blueprint $table) {
+        Schema::create('temples_fortune_categories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('temple_id')->comment('廟宇ID');
-            $table->unsignedBigInteger('sign_system_id')->comment('籤系統ID');
+            $table->unsignedBigInteger('fortune_category_id')->comment('籤詩分類ID');
             $table->integer('sort')->default(0)->comment('排序');
             $table->boolean('status')->default(true)->comment('狀態');
             $table->timestamps();
 
-            $table->unique(['temple_id', 'sign_system_id']);
-            $table->comment('廟宇-籤詩流派關聯');
+            $table->unique(['temple_id', 'fortune_category_id']);
+            $table->comment('廟宇-籤詩分類-關聯表');
         });
     }
 

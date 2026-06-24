@@ -13,7 +13,7 @@
 
     <h2 class="mb-4">籤詩集錦</h2>
     
-    @foreach($categories as $category)
+    @foreach($categoryDatas as $category)
         <div class="mb-5">
             <h3 class="border-start border-4 border-primary ps-3 mb-3">{{ $category->name }}</h3>
             <div class="row row-cols-1 row-cols-md-3 g-4">

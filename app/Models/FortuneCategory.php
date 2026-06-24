@@ -33,7 +33,7 @@ class FortuneCategory extends Model
     }
 
     // 關聯
-    public function deity()
+    public function deities()
     {
         return $this->belongsToMany(Deity::class, 'deities_fortune_categories', 'fortune_category_id', 'deity_id')
             ->withPivot(['sort', 'status'])
@@ -43,7 +43,7 @@ class FortuneCategory extends Model
     // 關聯
     public function temples()
     {
-        return $this->belongsToMany(Temple::class, 'temple_sign_system', 'temple_id', 'main_god_id')
+        return $this->belongsToMany(Temple::class, 'temples_fortune_categories', 'fortune_category_id', 'deity_id')
             ->withPivot(['sort', 'status'])
             ->withTimestamps();
     }
@@ -51,6 +51,6 @@ class FortuneCategory extends Model
     // 關聯
     public function fortunes(): HasMany
     {
-        return $this->hasMany(Fortune::class, 'sign_system_id', 'id');
+        return $this->hasMany(Fortune::class, 'fortune_category_id', 'id');
     }
 }

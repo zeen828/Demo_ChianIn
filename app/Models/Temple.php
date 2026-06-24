@@ -44,9 +44,9 @@ class Temple extends Model
     }
 
     // 關聯
-    public function signSystems()
+    public function fortuneCategories()
     {
-        return $this->belongsToMany(SignSystem::class, 'temple_sign_system', 'temple_id', 'sign_system_id')
+        return $this->belongsToMany(FortuneCategory::class, 'temples_fortune_categories', 'temple_id', 'fortune_category_id')
             ->withPivot(['sort', 'status'])
             ->withTimestamps();
     }

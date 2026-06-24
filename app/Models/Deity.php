@@ -46,16 +46,16 @@ class Deity extends Model
     }
 
     // 關聯
-    public function fortuneCategory()
+    public function fortuneCategories()
     {
         // 查詢
-        // $deity = Deity::with('fortuneCategory')->find($id);
-        // $deity = Deity::with('fortuneCategory')->where('slug', $name)->first();
+        // $deity = Deity::with('fortuneCategories')->find($id);
+        // $deity = Deity::with('fortuneCategories')->where('slug', $name)->first();
         // 新增
-        // $deity->fortuneCategory()->attach($systemId);
-        // $deity->fortuneCategory()->attach($systemId, ['sort'=>1, 'status'=>true]);
+        // $deity->fortuneCategories()->attach($systemId);
+        // $deity->fortuneCategories()->attach($systemId, ['sort'=>1, 'status'=>true]);
         // 同步
-        // $god->fortuneCategory()->sync([1 => ['sort'=>1], 2 => ['sort'=>2]]);
+        // $god->fortuneCategories()->sync([1 => ['sort'=>1], 2 => ['sort'=>2]]);
 
         return $this->belongsToMany(FortuneCategory::class, 'deities_fortune_categories', 'deity_id', 'fortune_category_id')
             ->withPivot(['sort', 'status'])

@@ -63,7 +63,7 @@ class FortuneController extends Controller
         $slug = $request->query('slug', 'guanyin');
 
         $Deity = Deity::with([
-            'fortuneCategory' => function ($query) {
+            'fortuneCategories' => function ($query) {
                 $query->orderBy('id', 'asc');
             }
         ])
@@ -77,12 +77,12 @@ class FortuneController extends Controller
         }
 
         $resource = FortuneCategoryResource::collection(
-            $Deity->fortuneCategory
+            $Deity->fortuneCategories
         );
 
         return response()->json([
             'main_god' => $Deity->name,
-            'raw_count' => $Deity->fortuneCategory->count(),
+            'raw_count' => $Deity->fortuneCategories->count(),
             'resource_data' => $resource,
         ]);
     }
