@@ -48,11 +48,11 @@
 @section('content')
                 <div class="container py-4">
                     <div class="text-center mb-4">
-                        <h1 class="fw-bold">{{ $MainGod->name }} 線上求籤</h1>
+                        <h1 class="fw-bold">{{ $Deity->name }} 線上求籤</h1>
                     </div>
                     <!-- 神像 -->
                     <div class="text-center mb-4">
-                        <img src="{{ $MainGod->image_url }}" class="img-fluid rounded-circle shadow main-god-image" alt="{{ $MainGod->name }}">
+                        <img src="{{ $Deity->image_url }}" class="img-fluid rounded-circle shadow main-god-image" alt="{{ $Deity->name }}">
                     </div>
                     <div class="text-center mb-4">
                         <p class="text-muted">誠心敬意，神明指引</p>
@@ -61,7 +61,7 @@
                     <div class="card shadow-sm mb-4" v-if="currentStep === 'select'">
                         <div class="card-body">
                             <label class="form-label fw-bold">請選擇籤詩類型</label>
-                            <select class="form-select form-select-lg" v-model="selectedSystem" @change="goToDrawStep">
+                            <select class="form-select form-select-lg" v-model="selectedCategory" @change="goToDrawStep">
                                 <option value="">請選擇籤詩類型</option>
                                 <option v-for="system in systems" :key="system.id" :value="system.id">
                                     @{{ system.name }}
@@ -150,11 +150,11 @@
                         count: 0,
                         // ===== 流程狀態控制 =====
                         // 'select': 選籤詩 | 'draw': 抽籤按鈕 | 'cup': 擲杯中 | 'result': 顯示最終解籤
-                        maingodSlug: '{{ $MainGod->slug }}',
+                        DeitySlug: '{{ $Deity->slug }}',
                         currentStep: 'select', 
                         // ===== 抽籤 =====
                         systems: [],// 籤詩系統列表
-                        selectedSystem: '',// 目前選擇的籤詩系統
+                        selectedCategory: '',// 目前選擇的籤詩系統
                         lotResult: null,// 抽籤結果
                         loading: false,// 是否正在讀取
                         // ===== 擲杯 =====
@@ -173,10 +173,10 @@
                     this.loadSystems();
                 },
                 methods: {
-                    // 讀取籤詩類型
+                    // (非同步)讀取籤詩類型
                     async loadSystems() {
                         try {
-                            const response = await Fortune.loadSystems(this.maingodSlug);
+                            const response = await Fortune.loadSystems(this.DeitySlug);
                             this.systems = response.data.resource_data;
                         } catch (error) {
                             console.error('載入系統失敗:', error);
@@ -184,19 +184,19 @@
                     },
                     // 選擇籤詩系統後切換到抽籤階段
                     goToDrawStep() {
-                        if (this.selectedSystem) {
+                        if (this.selectedCategory) {
                             this.currentStep = 'draw';
                         }
                     },
-                    // 抽籤
+                    // (非同步)抽籤
                     async drawLot() {
-                        if (!this.selectedSystem) {
+                        if (!this.selectedCategory) {
                             alert('請選擇籤詩類型');
                             return;
                         }
                         this.loading = true;
                         try {
-                            const response = await Fortune.draw(this.selectedSystem);
+                            const response = await Fortune.draw(this.selectedCategory);
                             this.lotResult = response.data.data;
                             // 初始化擲杯狀態，並切換到擲杯介面
                             this.currentShengbei = 0;
@@ -210,7 +210,7 @@
                         }
                     },
                     // 執杯
-                    async throwCup() {
+                    throwCup() {
                         if (this.isFlipping) return;
                         // 先清空上一次結果、移除 Class 類別
                         this.isFlipping = false;
@@ -249,7 +249,7 @@
                     },
                     // 全域狀態完全重置
                     resetAll() {
-                        this.selectedSystem = '';
+                        this.selectedCategory = '';
                         this.lotResult = null;
                         this.currentShengbei = 0;
                         this.cupResult = null;

@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
 // Model
-use App\Models\MainGod;
+use App\Models\Deity;
 
 class PartialsHeaderProvider extends ServiceProvider
 {
@@ -28,15 +28,15 @@ class PartialsHeaderProvider extends ServiceProvider
             function ($view) {
                 // $view->with('MainGodData', MainGod::where('status', true)->get());
 
-                $key = 'main_god_data';
+                $key = 'deity_data';
                 // Cache::forget($key);// 清除
-                $MainGodData = Cache::remember(
+                $DeityDatas = Cache::remember(
                     $key,
                     3600,// 秒-3600約1小時
-                    fn() => MainGod::where('status', true)->orderBy('sort', 'asc')->get()
+                    fn() => Deity::where('status', true)->orderBy('sort', 'asc')->get()
                 );
 
-                $view->with('MainGodData', $MainGodData);
+                $view->with('DeityDatas', $DeityDatas);
             }
         );
     }

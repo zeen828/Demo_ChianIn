@@ -1,7 +1,7 @@
 const Fortune = {
     async loadSystems(slug) {
         return await Api.get(
-            '/api/fortune-systems',
+            '/api/fortune/category',
             {
                 params: {
                     slug: slug
@@ -9,11 +9,11 @@ const Fortune = {
             }
         );
     },
-    async draw(systemId) {
+    async draw(categoryId) {
         return await Api.post(
             '/api/draw-lot',
             {
-                system_id: systemId
+                category_id: categoryId
             }
         );
     }

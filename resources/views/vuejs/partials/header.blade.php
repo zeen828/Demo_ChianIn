@@ -12,15 +12,15 @@
                                     <a class="nav-link {{ active_class('index') }}" aria-current="page" href="{{ route('index') }}">首頁</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle {{ active_class('main-god.*') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">主神</a>
+                                    <a class="nav-link dropdown-toggle {{ active_class('deity.*') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">主神</a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-@forelse ($MainGodData as $MainGod)
-                                        <li><a class="dropdown-item {{ active_param_class('main-god.index', 'name', $MainGod->slug) }}" href="{{ route('main-god.index', ['name' => $MainGod->slug]) }}">{{ $MainGod->name }}</a></li>
+@forelse ($DeityDatas as $Deity)
+                                        <li><a class="dropdown-item {{ active_param_class('deity.index', 'name', $Deity->slug) }}" href="{{ route('deity.index', ['name' => $Deity->slug]) }}">{{ $Deity->name }}</a></li>
 @empty
                                         <li><a class="dropdown-item disabled">無資料</a></li>
 @endforelse
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item {{ active_param_class('main-god.index', 'name', 'satan') }}" href="{{ route('main-god.index', ['name' => 'satan']) }}">撒旦</a></li>
+                                        <li><a class="dropdown-item {{ active_param_class('deity.index', 'name', 'satan') }}" href="{{ route('deity.index', ['name' => 'satan']) }}">撒旦</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">

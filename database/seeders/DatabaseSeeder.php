@@ -26,9 +26,11 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             CitySeeder::class,
 
-            MainGodSeeder::class,
+            // MainGodSeeder::class,
+            DeitySeeder::class,
 
-            SignSystemSeeder::class,
+            // SignSystemSeeder::class,
+            FortuneCategorySeeder::class,
             Fortune01Seeder::class,// 雷雨師一百籤
             Fortune02Seeder::class,// 六十甲子籤
             Fortune03Seeder::class,// 觀音一百籤
@@ -40,8 +42,8 @@ class DatabaseSeeder extends Seeder
             Fortune09Seeder::class,// 註生娘娘三十籤
             Fortune10Seeder::class,// 東京淺草觀音寺-一百籤
 
-            FortuneTranslationSeeder::class,
-            InterpretationTranslationSeeder::class,
+            // FortuneTranslationSeeder::class,
+            // InterpretationTranslationSeeder::class,
 
             TempleSeeder::class,
         ]);

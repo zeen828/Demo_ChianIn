@@ -3,14 +3,14 @@
 namespace Database\Factories;
 
 // Model
-use App\Models\MainGod;
+use App\Models\Deity;
 //
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<MainGod>
+ * @extends Factory<Deity>
  */
-class MainGodFactory extends Factory
+class DeityFactory extends Factory
 {
     /**
      * Define the model's default state.

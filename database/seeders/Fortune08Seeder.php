@@ -29,8 +29,8 @@ class Fortune08Seeder extends Seeder
         return [
             [
                 'id' => 801,
-                'sign_system_id' => 8,
-                'number' => 1,
+                'fortune_category_id' => 8,
+                'fortune_no' => 1,
                 'title' => '第一籤',
                 'content' => '寶馬盈門吉慶多，<br/>官司有理勸調和，<br/>萬般得利稱全福，<br/>一箭紅心定中科。',
                 'level' => '上吉',

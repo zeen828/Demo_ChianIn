@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Test\TestController;
-use App\Http\Controllers\Website\MainGodController;
+use App\Http\Controllers\Website\DeityController;
 use App\Http\Controllers\Website\FortuneController;
 use App\Http\Controllers\Website\LuckyNumberController;
 
@@ -21,12 +21,9 @@ Route::prefix('tests')->name('tests.')->group(function () {
     Route::get('websocket', [TestController::class, 'WebSocket'])->name('websocket');
 });
 
-// 主神
-Route::prefix('main-god')->name('main-god.')->group(function () {
-    Route::get('{name?}', [MainGodController::class, 'index'])->name('index');
-    // Route::get('/{name}', function (?string $name = 'guandi') {
-    //     return view('vuejs.pages.home', ['name' => $name]);
-    // });
+// 神明
+Route::prefix('deity')->name('deity.')->group(function () {
+    Route::get('{name?}', [DeityController::class, 'index'])->name('index');
 });
 
 // 籤詩全集

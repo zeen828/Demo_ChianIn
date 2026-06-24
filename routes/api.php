@@ -11,5 +11,5 @@ Route::get('/user', function (Request $request) {
 
 // routes/api.php
 Route::get('/test', [FortuneController::class, 'index']);
-Route::get('/fortune-systems', [FortuneController::class, 'systems']);
+Route::get('/fortune/category', [FortuneController::class, 'category']);
 Route::post('/draw-lot', [FortuneController::class, 'drawLot']);

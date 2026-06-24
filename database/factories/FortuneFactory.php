@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 // Model
 use App\Models\Fortune;
-use App\Models\SignSystem;
+use App\Models\FortuneCategory;
 //
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,11 +21,12 @@ class FortuneFactory extends Factory
     public function definition(): array
     {
         return [
-            // 'sign_system_id' => SignSystem::factory(),// 新建對應表
-            'sign_system_id' => SignSystem::query()->inRandomOrder()->value('id'),// 使用現有的ID
-            'number' => fake()->numberBetween(1, 100),
+            // 'fortune_category_id' => FortuneCategory::factory(),// 新建對應表
+            'fortune_category_id' => FortuneCategory::query()->inRandomOrder()->value('id'),// 使用現有的ID
+            'fortune_no' => fake()->numberBetween(1, 100),
             'title' => fake('zh_TW')->title(),
             'content' => fake('zh_TW')->paragraphs(3, true),
+            'summary' => fake('zh_TW')->paragraphs(3, true),
             'level' => fake()->randomElement([
                 '大吉',
                 '吉',
@@ -36,7 +37,7 @@ class FortuneFactory extends Factory
             ]),
             'code' => strtoupper(fake()->bothify('F###')),
             'image' => null,
-            'memo' => '',
+            'memo' => fake('zh_TW')->paragraphs(3, true),
             'status' => fake()->boolean(80),
         ];
     }

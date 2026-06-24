@@ -15,11 +15,12 @@ class Fortune extends Model
 
     protected $fillable = [
         // 'id',
-        'sign_system_id',
-        'number',
+        'fortune_category_id',
+        'fortune_no',
         'title',
         'content',
-        'fortune_level',
+        'summary',
+        'level',
         'code',
         'image',
         'memo',
@@ -29,14 +30,14 @@ class Fortune extends Model
     protected function casts(): array
     {
         return [
-            'number' => 'integer',
+            'fortune_no' => 'integer',
             'status' => 'boolean',
         ];
     }
 
     // 關聯
-    public function signsystem(): BelongsTo
+    public function fortuneCategory(): BelongsTo
     {
-        return $this->belongsTo(SignSystem::class, 'sign_system_id', 'id');
+        return $this->belongsTo(FortuneCategory::class, 'fortune_category_id', 'id');
     }
 }

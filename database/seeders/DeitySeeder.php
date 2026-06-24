@@ -4,19 +4,19 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-// Models
-use App\Models\MainGod;
+// Model
+use App\Models\Deity;
 
-class MainGodSeeder extends Seeder
+class DeitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        // MainGod::factory(50)->create();
+        // Deity::factory(150)->create();
 
-        MainGod::upsert(
+        Deity::upsert(
             $this->datas(),
             ['id']
         );
@@ -33,7 +33,7 @@ class MainGodSeeder extends Seeder
                 'name' => '觀世音菩薩',
                 'slug' => 'guanyin',
                 'description' => '',
-                'image' => '/images/main_god/guanyin.png',
+                'image' => '/images/deity/guanyin.png',
                 'sort' => 1,
                 'status' => true,
                 'created_at' => $now,
@@ -44,7 +44,7 @@ class MainGodSeeder extends Seeder
                 'name' => '媽祖',
                 'slug' => 'mazu',
                 'description' => '',
-                'image' => '/images/main_god/mazu.png',
+                'image' => '/images/deity/mazu.png',
                 'sort' => 2,
                 'status' => true,
                 'created_at' => $now,
@@ -55,7 +55,7 @@ class MainGodSeeder extends Seeder
                 'name' => '關聖帝君',
                 'slug' => 'guandi',
                 'description' => '',
-                'image' => '/images/main_god/guandi.png',
+                'image' => '/images/deity/guandi.png',
                 'sort' => 3,
                 'status' => true,
                 'created_at' => $now,
@@ -66,7 +66,7 @@ class MainGodSeeder extends Seeder
                 'name' => '土地公',
                 'slug' => 'tudigong',
                 'description' => '',
-                'image' => '/images/main_god/tudigong.png',
+                'image' => '/images/deity/tudigong.png',
                 'sort' => 4,
                 'status' => true,
                 'created_at' => $now,
@@ -77,7 +77,7 @@ class MainGodSeeder extends Seeder
                 'name' => '玄天上帝',
                 'slug' => 'xuantian',
                 'description' => '',
-                'image' => '/images/main_god/xuantian.png',
+                'image' => '/images/deity/xuantian.png',
                 'sort' => 5,
                 'status' => true,
                 'created_at' => $now,
@@ -88,7 +88,7 @@ class MainGodSeeder extends Seeder
                 'name' => '保生大帝',
                 'slug' => 'baosheng',
                 'description' => '',
-                'image' => '/images/main_god/baosheng.png',
+                'image' => '/images/deity/baosheng.png',
                 'sort' => 6,
                 'status' => true,
                 'created_at' => $now,
@@ -99,7 +99,7 @@ class MainGodSeeder extends Seeder
                 'name' => '城隍爺',
                 'slug' => 'chenghuang',
                 'description' => '',
-                'image' => '/images/main_god/chenghuang.png',
+                'image' => '/images/deity/chenghuang.png',
                 'sort' => 7,
                 'status' => true,
                 'created_at' => $now,
@@ -110,7 +110,7 @@ class MainGodSeeder extends Seeder
                 'name' => '三太子',
                 'slug' => 'santaizi',
                 'description' => '',
-                'image' => '/images/main_god/santaizi.png',
+                'image' => '/images/deity/santaizi.png',
                 'sort' => 8,
                 'status' => true,
                 'created_at' => $now,
@@ -121,7 +121,7 @@ class MainGodSeeder extends Seeder
                 'name' => '王爺公',
                 'slug' => 'wangye',
                 'description' => '',
-                'image' => '/images/main_god/wangye.png',
+                'image' => '/images/deity/wangye.png',
                 'sort' => 9,
                 'status' => true,
                 'created_at' => $now,
@@ -132,7 +132,7 @@ class MainGodSeeder extends Seeder
                 'name' => '月老',
                 'slug' => 'yuelao',
                 'description' => '',
-                'image' => '/images/main_god/yuelao.png',
+                'image' => '/images/deity/yuelao.png',
                 'sort' => 10,
                 'status' => true,
                 'created_at' => $now,
@@ -143,7 +143,7 @@ class MainGodSeeder extends Seeder
                 'name' => '撒旦',
                 'slug' => 'satan',
                 'description' => '',
-                'image' => '/images/main_god/satan.png',
+                'image' => '/images/deity/satan.png',
                 'sort' => 11,
                 'status' => true,
                 'created_at' => $now,
@@ -202,9 +202,9 @@ class MainGodSeeder extends Seeder
             ],
         ];
 
-        foreach ($relations as $godId => $systems) {
-            $god = MainGod::find($godId);
-            $god->signSystems()->sync($systems);
+        foreach ($relations as $mainId => $systems) {
+            $deity = Deity::find($mainId);
+            $deity->fortuneCategory()->sync($systems);
         }
     }
 }

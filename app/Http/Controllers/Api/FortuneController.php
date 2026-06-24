@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // Models
-use App\Models\MainGod;
-use App\Models\SignSystem;
+use App\Models\Deity;
+use App\Models\FortuneCategory;
 use App\Models\Fortune;
 // Resource
-use App\Http\Resources\Api\SignSystemResource;
+use App\Http\Resources\Api\FortuneCategoryResource;
 use App\Http\Resources\Api\FortuneResource;
 
 class FortuneController extends Controller
@@ -57,68 +57,32 @@ class FortuneController extends Controller
         //
     }
 
-    // 臨時 拉全部資料
-    public function systems_back()
-    {
-        // 使用 Eloquent 拉取所有資料
-        // 如果資料表內的欄位名稱就是 id 和 name，直接回傳即可
-        // $systems = SignSystem::all(['id', 'name']);
-        // $systems = SignSystem::orderBy('id', 'asc')->get(['id', 'name']);
-        $systems = SignSystem::orderBy('id', 'asc')->get();
-
-        $resource = SignSystemResource::collection($systems);
-
-        return response()->json([
-            'raw_count' => $systems->count(), // 如果這裡是 0，代表資料庫沒撈到東西
-            'resource_data' => $resource,
-        ]);
-
-        // return response()->json($systems);
-        // 產生 Resource: php artisan make:resource SignSystemResource
-        // return SignSystemResource::collection($systems);
-
-        // return response()->json([
-        //     [
-        //         'id' => 1,
-        //         'name' => '觀音一百籤'
-        //     ],
-        //     [
-        //         'id' => 2,
-        //         'name' => '雷雨師一百籤'
-        //     ],
-        //     [
-        //         'id' => 3,
-        //         'name' => '六十甲子籤'
-        //     ]
-        // ]);
-    }
-
     // 帶變數拉主神資料庫資料再拉詩籤流派關聯資表
-    public function systems(Request $request)
+    public function category(Request $request)
     {
         $slug = $request->query('slug', 'guanyin');
 
-        $MainGod = MainGod::with([
-            'signSystems' => function ($query) {
+        $Deity = Deity::with([
+            'fortuneCategory' => function ($query) {
                 $query->orderBy('id', 'asc');
             }
         ])
         ->where('slug', $slug)
         ->first();
 
-        if (!$MainGod) {
+        if (!$Deity) {
             return response()->json([
                 'message' => '找不到主神'
             ], 404);
         }
 
-        $resource = SignSystemResource::collection(
-            $MainGod->signSystems
+        $resource = FortuneCategoryResource::collection(
+            $Deity->fortuneCategory
         );
 
         return response()->json([
-            'main_god' => $MainGod->name,
-            'raw_count' => $MainGod->signSystems->count(),
+            'main_god' => $Deity->name,
+            'raw_count' => $Deity->fortuneCategory->count(),
             'resource_data' => $resource,
         ]);
     }
@@ -127,11 +91,11 @@ class FortuneController extends Controller
     {
         // 1. 驗證請求是否有 system_id
         $request->validate([
-            'system_id' => 'required|integer',
+            'category_id' => 'required|integer',
         ]);
 
         // 2. 隨機撈取一筆該系統的籤詩
-        $lot = Fortune::where('sign_system_id', $request->system_id)
+        $lot = Fortune::where('fortune_category_id', $request->category_id)
                     ->inRandomOrder()
                     ->first();
 
@@ -142,16 +106,5 @@ class FortuneController extends Controller
 
         // 4. 使用 Resource 回傳
         return new FortuneResource($lot);
-
-        $systemId = $request->system_id;
-
-        $lot = [
-            'number' => 28,
-            'level' => '上上籤',
-            'title' => '東邊月上正嬋娟',
-            'content' => '功名得意與君顯，前程萬里福綿綿。'
-        ];
-
-        return response()->json($lot);
     }
 }
