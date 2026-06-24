@@ -215,7 +215,7 @@ class DeitySeeder extends Seeder
 
         foreach ($relations as $mainId => $systems) {
             $deity = Deity::find($mainId);
-            $deity->fortuneCategory()->sync($systems);
+            $deity->fortuneCategories()->sync($systems);
         }
     }
 }

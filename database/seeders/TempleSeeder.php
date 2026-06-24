@@ -61,7 +61,7 @@ class TempleSeeder extends Seeder
 
         foreach ($relations as $templeId => $systems) {
             $temple = Temple::find($templeId);
-            $temple->signSystems()->sync($systems);
+            $temple->fortuneCategories()->sync($systems);
         }
     }
 }
