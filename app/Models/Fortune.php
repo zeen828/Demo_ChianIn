@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Fortune extends Model
@@ -33,6 +34,20 @@ class Fortune extends Model
             'fortune_no' => 'integer',
             'status' => 'boolean',
         ];
+    }
+
+    // 需引用 Attribute 才會有作用
+    protected function imageUrl(): Attribute
+    {
+        // 測試
+        // return Attribute::make(
+        //     get: fn () => 'TEST'
+        // );
+
+        // 用法:$god->image_url
+        return Attribute::make(
+            get: fn () => $this->image? asset($this->image) : 'https://placehold.co/320x320'
+        );
     }
 
     // 關聯

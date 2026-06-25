@@ -131,7 +131,7 @@
 
     <div class="card text-center">
         <div class="card-header">
-        Featured
+        {{ $fortune->fortuneCategory->name }}
         </div>
         <div class="card-body scroll-content fortune-container">
             <img src="{{ asset('/images/custom/seal-1.png') }}" class="fortune-seal" alt="籤到章">
@@ -139,7 +139,7 @@
             <h5 class="card-title fortune-title">{{ $fortune->title }}</h5>
         </div>
         <div class="card-footer">
-        2 days ago
+            <p class="card-text fortune-column">{!! $fortune->summary !!}</p>
         </div>
     </div>
 
@@ -197,13 +197,6 @@
                 </div>
             </div>
             @endif
-
-            <!-- 快速操作區 -->
-            <div class="card p-3 shadow-sm">
-                <h5>相關資訊</h5>
-                <p class="small text-muted">若對籤詩有疑問，建議可前往當地廟宇請示專業執事人員。</p>
-                <a href="#" class="btn btn-success w-100 mb-2">分享籤詩</a>
-            </div>
         </aside>
     </div>
 </div>
