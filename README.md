@@ -49,6 +49,9 @@ php artisan tinker
 # 2.透過 Laravel Seeder 建立權限跟管理員
 php artisan migrate:fresh --seed
 php artisan shield:generate --all
+
+# 清除緩存
+php artisan optimize:clear
 ```
 
 #### ENV資料庫設定
