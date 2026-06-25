@@ -15,10 +15,13 @@ class FortuneResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'number'  => $this->number,
-            'level'   => $this->fortune_level,
-            'title'   => $this->title,
+            'id' => $this->id,
+            'no' => $this->fortune_no,
+            'title' => $this->title,
             'content' => $this->content,
+            'summary' => $this->summary,
+            'level' => $this->level,
+            'code' => $this->code,
         ];
         // return parent::toArray($request);
     }

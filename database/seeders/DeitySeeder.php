@@ -160,11 +160,15 @@ class DeitySeeder extends Seeder
                 1 => ['sort' => 1, 'status' => true],
                 5 => ['sort' => 5, 'status' => true],
                 6 => ['sort' => 6, 'status' => true],
+                8 => ['sort' => 8, 'status' => true],
+                9 => ['sort' => 9, 'status' => true],
             ],
             2 => [
                 1 => ['sort' => 1, 'status' => true],
                 5 => ['sort' => 5, 'status' => true],
                 6 => ['sort' => 6, 'status' => true],
+                8 => ['sort' => 8, 'status' => true],
+                9 => ['sort' => 9, 'status' => true],
             ],
             3 => [
                 1 => ['sort' => 1, 'status' => true],

@@ -12,7 +12,7 @@
                                     <a class="nav-link {{ active_class('index') }}" aria-current="page" href="{{ route('index') }}">首頁</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle {{ active_class('deity.*') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">主神</a>
+                                    <a class="nav-link dropdown-toggle {{ active_class('deity.*') }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">神明</a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 @forelse ($DeityDatas as $Deity)
                                         <li><a class="dropdown-item {{ active_param_class('deity.index', 'name', $Deity->slug) }}" href="{{ route('deity.index', ['name' => $Deity->slug]) }}">{{ $Deity->name }}</a></li>

@@ -127,7 +127,7 @@
                             <hr>
                             <div class="row g-2 mt-4">
                                 <div class="col-6">
-                                    <button class="btn btn-primary w-100 py-2">查看解籤說明</button>
+                                    <button class="btn btn-primary w-100 py-2" @click="goFortuneInfo">查看解籤說明</button>
                                 </div>
                                 <div class="col-6">
                                     <button class="btn btn-outline-secondary w-100 py-2" @click="resetAll">再求一籤</button>
@@ -246,6 +246,12 @@
                                 }
                             }, 800);
                         }, 20);
+                    },
+                    // 到籤詩詳細頁
+                    goFortuneInfo() {
+                        if (!this.lotResult?.id) return;
+                        const url = `{{ url('/fortune') }}/${this.lotResult.id}/info`;
+                        window.location.href = url;
                     },
                     // 全域狀態完全重置
                     resetAll() {
