@@ -77,6 +77,70 @@
             }
 
 
+.section-title{
+    font-size:1.1rem;
+    color:#666;
+    margin-bottom:18px;
+    padding-bottom:8px;
+    border-bottom:1px solid #ececec;
+}
+.fortune-explain{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px 30px;
+
+    padding:20px;
+
+    background:#faf8f2;
+    border:1px solid #eadfc8;
+    border-radius:10px;
+}
+
+.fortune-explain div{
+    font-size:18px;
+    letter-spacing:2px;
+    color:#444;
+
+    padding:6px 0;
+
+    border-bottom:1px dashed #ddd;
+}
+.fortune-note{
+
+    background:#fcfcfc;
+
+    border-left:4px solid #d2b26a;
+
+    padding:18px 22px;
+
+    line-height:2;
+
+    font-size:16px;
+
+    color:#555;
+
+    border-radius:6px;
+}
+
+.card-body{
+    padding:2rem;
+}
+
+.card-body + .card-body{
+    border-top:1px solid #efefef;
+}
+.fortune-explain,
+.fortune-note{
+
+    background:
+        linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)),
+        url('/images/paper-bg.png');
+
+    box-shadow:
+        inset 0 0 20px rgba(0,0,0,.03);
+
+}
+
             /* =========================
             籤到印章
             ========================= */
@@ -127,77 +191,82 @@
 @endsection
 
 @section('content')
-<div class="container my-5">
 
-    <div class="card text-center">
-        <div class="card-header">
-        {{ $fortune->fortuneCategory->name }}
-        </div>
-        <div class="card-body scroll-content fortune-container">
-            <img src="{{ asset('/images/custom/seal-1.png') }}" class="fortune-seal" alt="籤到章">
-            <p class="card-text fortune-column">{!! $fortune->content !!}</p>
-            <h5 class="card-title fortune-title">{{ $fortune->title }}</h5>
-        </div>
-        <div class="card-footer">
-            <p class="card-text fortune-column">{!! $fortune->summary !!}</p>
-        </div>
-    </div>
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('index') }}">首頁</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('fortune.list') }}">籤詩集</a></li>
+            <li class="breadcrumb-item">{{ $fortune->fortuneCategory->name }}</li>
+            <li class="breadcrumb-item active">{{ $fortune->title }}</li>
+        </ol>
+    </nav>
 
     <div class="row">
         <!-- 左側主內容區 -->
-        <main class="col-lg-8">
-            <article class="card p-4 shadow-sm">
-                <!-- 標題與吉凶 -->
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h1 class="h2 text-primary">{{ $fortune->title }}</h1>
-                    <span class="badge {{ $fortune->level === '大吉' ? 'bg-success' : 'bg-secondary' }} fs-6">
-                        {{ $fortune->level }}
-                    </span>
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="mb-0">
+                        {{ $fortune->fortuneCategory->name }}
+                        <span class="fs-5 text-muted">{{ $fortune->title }}</span>
+                    </h2>
+                    {{ $fortune->level }}
+                    {{ $fortune->code }}
                 </div>
-
-                <div class="border-bottom pb-4 mb-4">
-                    <h5 class="text-muted"><i class="bi bi-journal-text"></i> 籤詩內容</h5>
-                    <div class="fs-4 py-3 text-center bg-light rounded">
-                        {!! $fortune->content !!}
-                    </div>
-                </div>
-
-                <!-- 更丁 (若有特定排版需求) -->
-                @if($fortune->code)
-                <div class="mb-4">
-                    <h5 class="text-muted">更丁/卦頭</h5>
-                    <p>{{ $fortune->code }}</p>
-                </div>
-                @endif
-
-                <!-- 解說詩籤 -->
-                <div class="mb-4">
-                    <h5 class="text-muted"><i class="bi bi-chat-left-text"></i> 詳細解說</h5>
-                    <div class="content-body">
-                        {!! $fortune->content !!}
-                    </div>
-                </div>
-            </article>
-
-            <!-- 頁面切換：上一支/下一支 -->
-            <div class="d-flex justify-content-between mt-4">
-                <a href="" class="btn btn-outline-primary">« 上一支</a>
-                <a href="" class="btn btn-outline-primary">下一支 »</a>
-            </div>
-        </main>
-
-        <!-- 右側輔助區 -->
-        <aside class="col-lg-4 mt-4 mt-lg-0">
-            <!-- 詩籤圖片 -->
-            @if($fortune->image_url)
-            <div class="card mb-4 shadow-sm">
-                <img src="{{ asset($fortune->image_url) }}" class="card-img-top" alt="{{ $fortune->title }}">
+                
                 <div class="card-body">
-                    <p class="card-text text-center text-muted small">{{ $fortune->title }} 籤文圖</p>
+                    <h5 class="text-muted"><i class="bi bi-journal-medical"></i> 籤詩</h5>
+                    <div class="text-center scroll-content fortune-container">
+                        <img src="{{ asset('/images/custom/seal-1.png') }}" class="fortune-seal" alt="籤到章">
+                        <p class="card-text fortune-column">{!! $fortune->content !!}</p>
+                        <h5 class="card-title fortune-title">{{ $fortune->title }}</h5>
+                    </div>
+                </div>
+@if($fortune->summary)
+                <div class="card-body">
+                    <h5 class="section-title">
+                        <i class="bi bi-list-columns-reverse"></i>
+                        解詩
+                    </h5>
+                    <div class="fortune-explain">
+@foreach($fortune->summary_items  as $item)
+    @if(trim($item) !== '')
+                        <div>{{ trim($item) }}</div>
+    @endif
+@endforeach
+                    </div>
+                </div>
+@endif
+@if($fortune->memo)
+                <div class="card-body">
+                    <h5 class="section-title">
+                        <i class="bi bi-chat-left-text"></i>
+                        備註
+                    </h5>
+
+                    <div class="fortune-note">
+                        {!! $fortune->memo !!}
+                    </div>
+                </div>
+@endif
+                <div class="card-footer">
+                    <p>{{ $fortune->code }}</p>
+                    {{ $fortune->level }}
                 </div>
             </div>
-            @endif
-        </aside>
+        </div>
+        <!-- 右側輔助區 -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <!-- 詩籤圖片 -->
+@if($fortune->image_url)
+                    <img src="{{ asset($fortune->image_url) }}" class="card-img-top" alt="{{ $fortune->title }}">
+@endif
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

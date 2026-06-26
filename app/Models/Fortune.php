@@ -36,6 +36,19 @@ class Fortune extends Model
         ];
     }
 
+    protected function summaryItems(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => collect(
+                preg_split('/<br\s*\/?>/i', $this->attributes['summary'] ?? '')
+            )
+                ->map(fn ($item) => trim($item))
+                ->filter()
+                ->values()
+                ->all()
+        );
+    }
+
     // 需引用 Attribute 才會有作用
     protected function imageUrl(): Attribute
     {
